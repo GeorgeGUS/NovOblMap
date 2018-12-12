@@ -176,18 +176,8 @@ var pins = [
   }
 ]
 
-var pins2 = [];
-
-$.getJSON('coords.json').done(function (pins) {
-    pins2 = pins;
-    console.log(pins)
-})
-
-// Функция ymaps.ready() будет вызвана, когда
-// загрузятся все компоненты API, а также когда будет готово DOM-дерево.
 ymaps.ready(init)
 function init () {
-  // Создание карты.
   var myMap = new ymaps.Map('map', {
     center: [58.19460497, 32.9240815],
     controls: [], // убрать все элементы управления
@@ -215,7 +205,6 @@ function init () {
 
   ymaps.borders.load('RU').then(
     function (geojson) {
-      //   console.dir(geojson)
       console.dir(geojson.features[NOV_OBL_INDEX])
       console.dir(geojson.features.map(f => f.properties))
     },
@@ -235,16 +224,9 @@ function init () {
   //     }
   //   )
 
-  //   ymaps.borders.load('RU', { quality: 2 }).then(function (geojson) {
-  //     var geoObject = new ymaps.GeoObject(geojson.features[NOV_OBL_INDEX])
-  //     myMap.geoObjects.add(geoObject)
-  //   })
-
   ymaps.borders.load('RU', { quality: 2 }).then(
     function (geojson) {
       var objectManager = new ymaps.ObjectManager()
-      // Чтобы добавить объекты в ObjectManager, необходимо
-      // задать для них идентификаторы.
       var features = geojson.features.map(function (feature) {
         feature.id = feature.properties.iso3166
         feature.options = {
