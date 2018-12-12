@@ -176,6 +176,13 @@ var pins = [
   }
 ]
 
+var pins2 = [];
+
+$.getJSON('coords.json').done(function (pins) {
+    pins2 = pins;
+    console.log(pins)
+})
+
 // Функция ymaps.ready() будет вызвана, когда
 // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
 ymaps.ready(init)
