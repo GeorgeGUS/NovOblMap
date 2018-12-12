@@ -1,0 +1,31 @@
+body {
+    position: relative;
+    margin: 0;
+}
+
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Для скрытия логотипа Яндекса на карте */
+#map::before,
+#map::after {
+    content: '';
+    position: absolute;
+    z-index: 1000;
+    bottom: 0;
+    height: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 10px 5px #fff;
+}
+
+#map::before {
+    left: 0;
+    width: 220px;
+}
+
+#map::after {
+    right: 0;
+    width: 220px;
+}
