@@ -1,5 +1,11 @@
 const DATA_URL =
   'https://cdn.jsdelivr.net/gh/GeorgeGUS/table-converter/src/data/points.json'
+const PIN_ON = 'img/tower-on.gif'
+const PIN_OFF = 'img/tower-off.png'
+// const VN_COORDS = [58.52281, 31.269915]
+const ceh = 'сeh'
+const ch1mux = 'сh1mux'
+const ch2mux = 'сh2mux'
 
 ymaps.ready(init)
 function init () {
@@ -20,42 +26,43 @@ function init () {
           iconCaption: pin.name
         },
         {
-          iconLayout: 'default#image',
-          iconImageHref: 'img/tower-off.png',
+          iconLayout: 'default#imageWithContent',
+          iconImageHref: PIN_ON,
           iconImageSize: [32, 42],
-          iconImageOffset: [-17, -42]
+          iconImageOffset: [-17, -38],
+          iconShadow: true,
+          iconShadowImageHref: PIN_OFF,
+          iconShadowImageSize: [32, 42],
+          iconShadowImageOffset: [-17, -36]
         }
       )
       myMap.geoObjects.add(myPlacemark)
     }
+
+    // Получаем объект с координатами головных цехов
+    var cehCoords = {}
+    data.forEach(pin => {
+      if (pin[ceh] === pin.name) {
+        cehCoords[pin.name] = [pin.lat, pin.len]
+      }
+    })
+
+    // Проводим линии от головных цехов до их пунктов
+    data.forEach(pin => {
+      var myPolyline = new ymaps.Polyline([
+        cehCoords[pin[ceh]],
+        [pin.lat, pin.len]
+      ])
+      myMap.geoObjects.add(myPolyline)
+    })
   })
 
   const NOV_OBL_INDEX = 32
-  const NOV_ISO = 'RU-NGR'
-
-  ymaps.borders.load('RU').then(
-    function (geojson) {
-      console.dir(geojson.features[NOV_OBL_INDEX])
-      console.dir(geojson.features.map(f => f.properties))
-    },
-    function (e) {
-      console.log(e)
-    }
-  )
-
-  //   ymaps.borders.load(NOV_ISO).then(
-  //     function (geojson) {
-  //       console.dir(geojson)
-  //       //   console.dir(geojson.features[NOV_OBL_INDEX])
-  //       //   console.dir(geojson.features.map(f => f.properties.name))
-  //     },
-  //     function (e) {
-  //       console.log(e)
-  //     }
-  //   )
 
   ymaps.borders.load('RU', { quality: 2 }).then(
     function (geojson) {
+      console.dir(geojson.features[NOV_OBL_INDEX])
+      console.dir(geojson.features.map(f => f.properties))
       var objectManager = new ymaps.ObjectManager()
       var features = geojson.features.map(function (feature) {
         feature.id = feature.properties.iso3166
@@ -75,12 +82,4 @@ function init () {
       console.log(e)
     }
   )
-
-  //   ymaps.borders.load('RU', { quality: 2 }).then(function (geojson) {
-  //     var regions = ymaps.geoQuery(geojson)
-  //     regions
-  //       .search(`properties.iso3166 = "${NOV_ISO}"`)
-  //       .setOptions('fillColor', '#ff001a')
-  //     regions.addToMap(myMap)
-  //   })
 }
