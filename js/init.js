@@ -9,7 +9,7 @@ function init () {
     {
       center: [58.19460497, 32.9240815],
       controls: [], // убрать все элементы управления
-      zoom: 7.9
+      zoom: 8.3
     },
     {
       avoidFractionalZoom: false // Разрешает дробное значение зума
