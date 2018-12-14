@@ -12,8 +12,12 @@ function init () {
   var myMap = new ymaps.Map('map', {
     center: [58.19460497, 32.9240815],
     controls: [], // убрать все элементы управления
-    zoom: 8
+    zoom: 7.9
+  }, {
+    avoidFractionalZoom: false, //Разрешает дробное значение зума
   })
+  //Запретить манипуляции с картой
+  myMap.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom']);
 
   // Получаем данные по пунктам вещания ЦТВ
   $.getJSON(DATA_URL, function (data) {
@@ -47,14 +51,66 @@ function init () {
       }
     })
 
-    // Проводим линии от головных цехов до их пунктов
-    data.forEach(pin => {
-      var myPolyline = new ymaps.Polyline([
-        cehCoords[pin[ceh]],
-        [pin.lat, pin.len]
-      ])
+    // Проводим прямые линии от головных цехов до их пунктов
+    data.forEach((pin, i) => {
+      var myPolyline = new ymaps.Polyline(
+        [cehCoords[pin[ceh]], [pin.lat, pin.len]],
+        {},
+        {
+          strokeWidth: 3,
+          strokeColor: '#2196f3'
+        }
+      )
+      if (i < 1) {
+        console.log(myPolyline)
+      }
       myMap.geoObjects.add(myPolyline)
     })
+
+    // Проводим маршруты от головных цехов до их пунктов
+    // data.forEach((pin, i) => {
+    //   var route = new ymaps.multiRouter.MultiRoute(
+    //     {
+    //       referencePoints: [cehCoords[pin[ceh]], [pin.lat, pin.len]]
+    //     },
+    //     {
+    //       wayPointVisible: false,
+    //       // Внешний вид линии активного маршрута.
+    //       routeActiveStrokeWidth: 5,
+    //       routeActiveStrokeStyle: 'solid',
+    //       routeActiveStrokeColor: '#2196f3',
+    //       // Внешний вид линий альтернативных маршрутов.
+    //       routeStrokeStyle: 'dot',
+    //       routeStrokeColor: '#0000',
+    //       routeStrokeWidth: 1
+    //     }
+    //   )
+    //   if (i < 1) {
+    //     console.log(route)
+    //   }
+    //   myMap.geoObjects.add(route)
+    // })
+
+    // Set the route.
+    // A driving route is created by default.
+    // var multiRoute = new ymaps.multiRouter.MultiRoute(
+    //   {
+    //     // Route points. Points can be set as coordinates or addresses.
+    //     referencePoints: [
+    //       'Smolenskaya metro station, Moscow',
+    //       'Arbatskaya metro station, Moscow',
+    //       [55.734876, 37.59308] // Lva Tolstogo street
+    //     ]
+    //   },
+    //   {
+    //     // |Automatically set the map viewport so that
+    //     // the entire route is visible.
+    //     boundsAutoApply: true
+    //   }
+    // )
+
+    // Add the route to the map.
+    // myMap.geoObjects.add(multiRoute)
   })
 
   const NOV_OBL_INDEX = 32
