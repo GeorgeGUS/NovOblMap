@@ -56,9 +56,10 @@ function init () {
   // Рисует Новгородскую область
   ymaps.borders.load('RU', { quality: 2 }).then(
     function (geojson) {
+      const NOV_OBL_INDEX = 32
       console.dir(geojson.features[NOV_OBL_INDEX])
       console.dir(geojson.features.map(f => f.properties))
-      const NOV_OBL_INDEX = 32
+      
       var objectManager = new ymaps.ObjectManager()
       var features = geojson.features.map(function (feature) {
         feature.id = feature.properties.iso3166

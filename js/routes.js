@@ -18,7 +18,7 @@ export function createRoutes(data, myMap) {
         }
       )
       if (i < 1) {
-        console.log(myPolyline)
+        // console.log(myPolyline)
       }
       myMap.geoObjects.add(myPolyline)
     })
