@@ -54,8 +54,8 @@ function init () {
   ymaps.borders.load('RU', { quality: 2 }).then(
     function (geojson) {
       const NOV_OBL_INDEX = 32
-      console.dir(geojson.features[NOV_OBL_INDEX])
-      console.dir(geojson.features.map(f => f.properties))
+      // console.dir(geojson.features[NOV_OBL_INDEX])
+      // console.dir(geojson.features.map(f => f.properties))
 
       var objectManager = new ymaps.ObjectManager()
       var feature = geojson.features[NOV_OBL_INDEX]

@@ -139,7 +139,7 @@ export var Car = function () {
             // ищем систему координат
             options.coordSystem = options.coordSystem || this.coordSystem || this.getMap().options.get('projection').getCoordSystem();
             // считаем скорость базируясь на текущем зуме: very dirty but works pretty cute
-            options.speed = options.speed || Math.round(80 / this.getMap().getZoom());
+            options.speed = options.speed || Math.round(1000 / this.getMap().getZoom());
             // Получаем точечки
             this.waypoints = makeWayPointsFromSegments(segments, options);
             // Запуск анимации
