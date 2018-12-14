@@ -2,16 +2,6 @@ import { createRoutes } from './routes'
 import { Car } from './car'
 import { data } from './data'
 
-//TODO: Удалить лишние константы.
-const DATA_URL =
-  'https://cdn.jsdelivr.net/gh/GeorgeGUS/table-converter/src/data/points.json'
-const PIN_ON = 'img/tower-on.gif'
-const PIN_OFF = 'img/tower-off.png'
-// const VN_COORDS = [58.52281, 31.269915]
-const ceh = 'сeh'
-const ch1mux = 'сh1mux'
-const ch2mux = 'сh2mux'
-
 ymaps.ready(init)
 function init () {
   var myMap = new ymaps.Map(
