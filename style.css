@@ -29,3 +29,30 @@ body {
     right: 0;
     width: 220px;
 }
+
+.pin {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1;
+    color: #333;
+    text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff;
+}
+
+.pin::before {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    bottom: 100%;
+    display: block;
+    width: 40px;
+    height: 50px;
+    background-image: url('./img/tower-on.gif');
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    background-size: contain;
+}

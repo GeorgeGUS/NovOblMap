@@ -2,6 +2,7 @@ import { createRoutes } from './routes'
 import { Car } from './car'
 import { data } from './data'
 
+//TODO: Удалить лишние константы.
 const DATA_URL =
   'https://cdn.jsdelivr.net/gh/GeorgeGUS/table-converter/src/data/points.json'
 const PIN_ON = 'img/tower-on.gif'
@@ -31,21 +32,28 @@ function init () {
 
   console.log(data)
 
+  var PinLabelClass = ymaps.templateLayoutFactory.createClass(
+    `<div class="pin">{{ properties.iconCaption }}</div>`
+  )
+
   for (var pin of data) {
     var myPlacemark = new ymaps.Placemark(
       [pin.lat, pin.len],
       {
         iconCaption: pin.name
       },
+      // {
+      //   iconLayout: 'default#image',
+      //   iconImageHref: PIN_ON,
+      //   iconImageSize: [32, 42],
+      //   iconImageOffset: [-17, -38],
+      //   iconShadow: true,
+      //   iconShadowImageHref: PIN_OFF,
+      //   iconShadowImageSize: [32, 42],
+      //   iconShadowImageOffset: [-17, -36]
+      // }
       {
-        iconLayout: 'default#imageWithContent',
-        iconImageHref: PIN_ON,
-        iconImageSize: [32, 42],
-        iconImageOffset: [-17, -38],
-        iconShadow: true,
-        iconShadowImageHref: PIN_OFF,
-        iconShadowImageSize: [32, 42],
-        iconShadowImageOffset: [-17, -36]
+        iconLayout: PinLabelClass
       }
     )
     myMap.geoObjects.add(myPlacemark)
@@ -59,20 +67,20 @@ function init () {
       const NOV_OBL_INDEX = 32
       console.dir(geojson.features[NOV_OBL_INDEX])
       console.dir(geojson.features.map(f => f.properties))
-      
+
       var objectManager = new ymaps.ObjectManager()
-      var features = geojson.features.map(function (feature) {
-        feature.id = feature.properties.iso3166
-        feature.options = {
-          strokeWidth: 3,
-          strokeColor: '#ff4500',
-          strokeOpacity: 0.6,
-          fillColor: '#ffd500',
-          fillOpacity: 0.4
-        }
-        return feature
-      })
-      objectManager.add(features[NOV_OBL_INDEX])
+      console.log(geojson.features)
+      var feature = geojson.features[NOV_OBL_INDEX]
+      feature.id = feature.properties.iso3166
+      feature.options = {
+        strokeWidth: 3,
+        strokeColor: '#ff4500',
+        strokeOpacity: 0.6,
+        fillColor: '#ffd500',
+        fillOpacity: 0.4,
+        openHintOnHover: false
+      }
+      objectManager.add(feature)
       myMap.geoObjects.add(objectManager)
     },
     function (e) {
