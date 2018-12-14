@@ -64,16 +64,24 @@ body {
 .ded {
     width: 68px;
     height: 83px;
+    margin-left: -34px;
+    margin-top: -77px;
     background-image: url('./img/DMoroz_forward.gif');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
-.ded-forward {
+.ded-se,
+.ded-e,
+.ded-ne,
+.ded-n {
     background-image: url('./img/DMoroz_forward.gif');
 }
 
-.ded-backward {
+.ded-nw,
+.ded-w,
+.ded-sw,
+.ded-s {
     background-image: url('./img/DMoroz_backward.gif');
 }

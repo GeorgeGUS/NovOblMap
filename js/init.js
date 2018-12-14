@@ -48,7 +48,7 @@ function init () {
   // Рисуем маршруты (линии) от цехов до пунктов
   var cehCoords = createRoutes(data, myMap)
 
-  DMoroz(cehCoords, myMap)
+  DMoroz(cehCoords, myMap, ymaps)
 
   // Рисует Новгородскую область
   ymaps.borders.load('RU', { quality: 2 }).then(
