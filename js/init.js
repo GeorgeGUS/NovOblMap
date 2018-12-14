@@ -132,10 +132,10 @@ function init () {
         feature.id = feature.properties.iso3166
         feature.options = {
           strokeWidth: 3,
-          strokeColor: '#607D8B',
-          strokeOpacity: 0.7,
-          fillColor: '#9e9e9e',
-          fillOpacity: 0.5
+          strokeColor: '#ff4500',
+          strokeOpacity: 0.6,
+          fillColor: '#ffd500',
+          fillOpacity: 0.4
         }
         return feature
       })
