@@ -23,6 +23,8 @@ export function createRoutes(data, myMap) {
       myMap.geoObjects.add(myPolyline)
     })
 
+    return cehCoords;
+
     // Проводим маршруты от головных цехов до их пунктов
     // data.forEach((pin, i) => {
     //   var route = new ymaps.multiRouter.MultiRoute(

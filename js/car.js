@@ -5,7 +5,7 @@
  * @author <a href="mailto:qfox@ya.ru">Alex Yaroshevich</a>
  */
 
-var Car = (function () {
+ export var Car = function () {
     "use strict";
 
     // делаем заготовку для кол-ва направлений. 4, 8 или 16 (+, x, *)
@@ -149,7 +149,4 @@ var Car = (function () {
     };
 
     return Car;
-}());
-
-export default Car;
-
+};

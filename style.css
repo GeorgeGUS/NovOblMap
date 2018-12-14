@@ -60,3 +60,20 @@ body {
 .pin.active::before {
     background-image: url('./img/tower-on.gif');
 }
+
+.ded {
+    width: 68px;
+    height: 83px;
+    background-image: url('./img/DMoroz_forward.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.ded-forward {
+    background-image: url('./img/DMoroz_forward.gif');
+}
+
+.ded-backward {
+    background-image: url('./img/DMoroz_backward.gif');
+}

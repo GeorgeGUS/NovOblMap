@@ -1,6 +1,7 @@
-import { createRoutes } from './routes'
-import { Car } from './car'
 import { data } from './data'
+import { createRoutes } from './routes'
+import {DMoroz} from './dmoroz'
+
 
 ymaps.ready(init)
 function init () {
@@ -17,10 +18,6 @@ function init () {
   )
   // Запретить манипуляции с картой
   myMap.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom'])
-
-  // Получаем данные по пунктам вещания ЦТВ
-
-  console.log(data)
 
   var PinLabelClass = ymaps.templateLayoutFactory.createClass(
     `<div class="pin">{{ properties.iconCaption }}</div>`
@@ -49,7 +46,9 @@ function init () {
     myMap.geoObjects.add(myPlacemark)
   }
   // Рисуем маршруты (линии) от цехов до пунктов
-  createRoutes(data, myMap)
+  var cehCoords = createRoutes(data, myMap)
+
+  DMoroz(cehCoords, myMap)
 
   // Рисует Новгородскую область
   ymaps.borders.load('RU', { quality: 2 }).then(
@@ -59,7 +58,6 @@ function init () {
       console.dir(geojson.features.map(f => f.properties))
 
       var objectManager = new ymaps.ObjectManager()
-      console.log(geojson.features)
       var feature = geojson.features[NOV_OBL_INDEX]
       feature.id = feature.properties.iso3166
       feature.options = {
