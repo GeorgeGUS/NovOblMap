@@ -1,0 +1,32 @@
+{
+  "name": "novoblmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "json-loader": "^0.5.7",
+    "webpack": "^4.27.1",
+    "webpack-cli": "3.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeorgeGUS/NovOblMap.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GeorgeGUS/NovOblMap/issues"
+  },
+  "homepage": "https://github.com/GeorgeGUS/NovOblMap#readme"
+}
