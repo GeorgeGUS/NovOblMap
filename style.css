@@ -58,7 +58,7 @@ body {
 }
 
 .pin.active::before {
-    background-image: url('./img/tower-on.gif');
+    background-image: url('./img/tower-on_.gif');
 }
 
 .ded {
@@ -84,4 +84,8 @@ body {
 .ded-sw,
 .ded-s {
     background-image: url('./img/DMoroz_backward.gif');
+}
+
+.ded-jump {
+    background-image: url('./img/DMoroz_jumping.gif');
 }
