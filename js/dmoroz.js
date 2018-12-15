@@ -9,21 +9,10 @@ export function DMoroz (routePoints, map, ymaps) {
   map.geoObjects.add(ded)
 
   var points = [
-    routePoints['Великий Новгород'],
-    {
-      type: 'viaPoint',
-      point: routePoints['Залучье']
-    },
-    {
-      type: 'viaPoint',
-      point: routePoints['Пролетарий']
-    },
-    routePoints['Боровичи']
+    [routePoints['Великий Новгород'], routePoints['Залучье']],
+    [routePoints['Залучье'], routePoints['Пролетарий']],
+    [routePoints['Пролетарий'], routePoints['Боровичи']]
   ]
-
-  var points1 = [routePoints['Великий Новгород'], routePoints['Пролетарий']]
-
-  var points2 = [routePoints['Пролетарий'], routePoints['Великий Новгород']]
 
   function delay (fn, ms) {
     return function () {
@@ -35,42 +24,45 @@ export function DMoroz (routePoints, map, ymaps) {
       }, ms)
     }
   }
-  var firstRoute = delay(addDedRoute, 5000)
-  var secondRoute = delay(addDedRoute, 1500)
 
-  function stopJumping(geoObject) {
+  function stopJumping (geoObject) {
     geoObject.properties.set('direction', '')
   }
-
   var stopDed = delay(stopJumping, 1000)
 
-  function addDedRoute (points, cb, cbAttr) {
-    ymaps.route(points).then(function (route) {
-      map.geoObjects.add(route.getPaths())
-      ded.moveTo(
-        route
-          .getPaths()
-          .get(0)
-          .getSegments(),
-        {
-          speed: 3000,
-          directions: 8
-        },
-        function (geoObject, coords, direction) {
-          geoObject.geometry.setCoordinates(coords)
-          geoObject.properties.set('direction', direction.t)
-        },
-        function (geoObject) {
-          geoObject.properties.set('direction', 'jump')
-          stopDed(geoObject)
-          
-          if (cb) {
-            cb(cbAttr)
+  // Добавляем рекурсивную функцию перемещения по точкам
+  function addDedRoute (points) {
+    if (points.length == 0) {
+      return null
+    } else {
+      ymaps.route(points.shift()).then(function (route) {
+        ded.moveTo(
+          route
+            .getPaths()
+            .get(0)
+            .getSegments(),
+          {
+            speed: 3000,
+            directions: 8
+          },
+          function (geoObject, coords, direction) {
+            geoObject.geometry.setCoordinates(coords)
+            geoObject.properties.set('direction', direction.t)
+          },
+          function (geoObject) {
+            geoObject.properties.set('direction', 'jump')
+            stopDed(geoObject)
+
+            var nextCall = delay(addDedRoute, 1500)
+            nextCall(points)
           }
-        }
-      )
-    })
+        )
+      })
+    }
   }
 
-  firstRoute(points1, secondRoute, points2)
+  var startDedWalking = delay(addDedRoute, 5000)
+
+  //Запускаем Деда Мороза гулять через 5 секунд.
+  startDedWalking(points)
 }

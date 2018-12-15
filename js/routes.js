@@ -33,8 +33,8 @@ export function createRoutes (data, myMap) {
         strokeColor: '#87cefa'
       })
       if (i < 1) {
-        console.dir(points.get(1).properties.set())
-        console.log(onlyRoute)
+        // console.dir(points.get(1).properties.set())
+        // console.log(onlyRoute)
       }
       myMap.geoObjects.add(onlyRoute)
     })
