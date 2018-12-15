@@ -67,17 +67,25 @@ function init () {
     }
   )
 
-  // Получаем объект с координатами головных цехов
-  var cehCoords = {}
+  // Получаем объект цехов с их координатами и принадлежащими пунктами
+  var ceh = {}
   data.forEach(pin => {
+    if (ceh.hasOwnProperty(pin.ceh)) {
+      ceh[pin.ceh].pins.push(pin)
+    } else {
+      ceh[pin.ceh] = { pins: [pin] }
+    }
+
     if (pin.ceh === pin.name) {
-      cehCoords[pin.ceh] = [pin.lat, pin.len]
+      ceh[pin.ceh].coords = [pin.lat, pin.len]
     }
   })
 
+  console.log(ceh)
+
   // Рисуем маршруты (линии) от цехов до пунктов
-  // var cehCoords = createRoutes(data, cehCoords, myMap)
+  createRoutes(ceh, 'Великий Новгород', myMap)
 
   // Вставляем гуляющего по карте Деда Мороза
-  DMoroz(cehCoords, myMap)
+  DMoroz(ceh, myMap)
 }

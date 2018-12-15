@@ -1,4 +1,4 @@
-export function createRoutes (data, myMap) {
+export function createRoutes (ceh, cehName, myMap) {
   // Проводим прямые линии от головных цехов до их пунктов
   // data.forEach((pin, i) => {
   //   var myPolyline = new ymaps.Polyline(
@@ -16,21 +16,15 @@ export function createRoutes (data, myMap) {
   // })
 
   // Проводим маршруты от головных цехов до их пунктов
-  data.forEach((pin, i) => {
-    ymaps.route([cehCoords[pin.ceh], [pin.lat, pin.len]]).then(function (route) {
-      var points = route.getWayPoints()
+  ceh[cehName].pins.forEach((pin, i) => {
+    ymaps.route([ceh[cehName].coords, [pin.lat, pin.len]]).then(function (route) {
       var onlyRoute = route.getPaths()
       onlyRoute.options.set({
         strokeWidth: 7,
         strokeColor: '#87cefa'
       })
-      if (i < 1) {
-        // console.dir(points.get(1).properties.set())
-        // console.log(onlyRoute)
-      }
+      
       myMap.geoObjects.add(onlyRoute)
     })
   })
-
-  return cehCoords
 }

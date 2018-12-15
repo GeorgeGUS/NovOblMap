@@ -1,6 +1,6 @@
 import { Car } from './car'
 
-export function DMoroz (cehCoords, map) {
+export function DMoroz (ceh, map) {
   var ded = new Car({
     iconLayout: ymaps.templateLayoutFactory.createClass(
       '<div class="ded ded-$[properties.direction]"></div>'
@@ -9,9 +9,9 @@ export function DMoroz (cehCoords, map) {
   map.geoObjects.add(ded)
 
   var points = [
-    [cehCoords['Великий Новгород'], cehCoords['Залучье']],
-    [cehCoords['Залучье'], cehCoords['Пролетарий']],
-    [cehCoords['Пролетарий'], cehCoords['Боровичи']]
+    [ceh['Великий Новгород'].coords, ceh['Залучье'].coords],
+    [ceh['Залучье'].coords, ceh['Пролетарий'].coords],
+    [ceh['Пролетарий'].coords, ceh['Боровичи'].coords]
   ]
 
   function delay (fn, ms) {
