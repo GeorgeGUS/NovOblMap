@@ -179,8 +179,6 @@ export var Car = (function () {
         coordinates: [55.75062, 37.62561]
       }
     }
-    options = options || {}
-    options.preset = options.preset || 'twirl#greenStretchyIcon'
     var result = new ymaps.GeoObject(properties, options)
     result.coordSystem = options.coordSystem
     result.waypoints = []
@@ -219,19 +217,17 @@ export var Car = (function () {
       // Получаем точечки
       this.waypoints = makeWayPointsFromSegments(segments, options)
       // Запуск анимации
-      var that = this
-
-      var timer = setInterval(function () {
+      var timer = setInterval(() => {
         // если точек больше нет - значит приехали
-        if (that.waypoints.length === 0) {
-          ;(completeCallback || defaultCompleteCallback)(that)
+        if (this.waypoints.length === 0) {
+          completeCallback(this)
           return clearTimeout(timer)
         }
         // берем следующую точку
-        var nextPoint = that.waypoints.shift()
-          // и отправляем в пользовательский callback
-          ;(movingCallback ||
-            defaultMovingCallback)(that, nextPoint.coords, nextPoint.direction)
+        var nextPoint = this.waypoints.shift()
+        // и отправляем в пользовательский callback
+        ;(movingCallback ||
+          defaultMovingCallback)(this, nextPoint.coords, nextPoint.direction)
       }, 42)
     }
 

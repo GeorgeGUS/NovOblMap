@@ -1,12 +1,4 @@
 export function createRoutes (data, myMap) {
-  // Получаем объект с координатами головных цехов
-  var cehCoords = {}
-  data.forEach(pin => {
-    if (pin.ceh === pin.name) {
-      cehCoords[pin.name] = [pin.lat, pin.len]
-    }
-  })
-
   // Проводим прямые линии от головных цехов до их пунктов
   // data.forEach((pin, i) => {
   //   var myPolyline = new ymaps.Polyline(

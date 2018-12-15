@@ -1,6 +1,6 @@
 import { Car } from './car'
 
-export function DMoroz (routePoints, map, ymaps) {
+export function DMoroz (cehCoords, map) {
   var ded = new Car({
     iconLayout: ymaps.templateLayoutFactory.createClass(
       '<div class="ded ded-$[properties.direction]"></div>'
@@ -9,26 +9,22 @@ export function DMoroz (routePoints, map, ymaps) {
   map.geoObjects.add(ded)
 
   var points = [
-    [routePoints['Великий Новгород'], routePoints['Залучье']],
-    [routePoints['Залучье'], routePoints['Пролетарий']],
-    [routePoints['Пролетарий'], routePoints['Боровичи']]
+    [cehCoords['Великий Новгород'], cehCoords['Залучье']],
+    [cehCoords['Залучье'], cehCoords['Пролетарий']],
+    [cehCoords['Пролетарий'], cehCoords['Боровичи']]
   ]
 
   function delay (fn, ms) {
-    return function () {
-      var saveThis = this
-      var saveArgs = arguments
-
-      setTimeout(function () {
-        fn.apply(saveThis, saveArgs)
+    return function() {
+      setTimeout(() => {
+        fn.apply(this, arguments)
       }, ms)
     }
   }
 
-  function stopJumping (geoObject) {
+  var stopJumping = delay(function (geoObject) {
     geoObject.properties.set('direction', '')
-  }
-  var stopDed = delay(stopJumping, 1000)
+  }, 1000)
 
   // Добавляем рекурсивную функцию перемещения по точкам
   function addDedRoute (points) {
@@ -51,7 +47,7 @@ export function DMoroz (routePoints, map, ymaps) {
           },
           function (geoObject) {
             geoObject.properties.set('direction', 'jump')
-            stopDed(geoObject)
+            stopJumping(geoObject)
 
             var nextCall = delay(addDedRoute, 1500)
             nextCall(points)
@@ -63,6 +59,6 @@ export function DMoroz (routePoints, map, ymaps) {
 
   var startDedWalking = delay(addDedRoute, 5000)
 
-  //Запускаем Деда Мороза гулять через 5 секунд.
+  // Запускаем Деда Мороза гулять через 5 секунд.
   startDedWalking(points)
 }
