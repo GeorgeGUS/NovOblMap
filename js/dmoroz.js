@@ -1,4 +1,5 @@
 import { Car } from './car'
+import { createRoutes } from './routes'
 
 export function DMoroz (ceh, map) {
   var ded = new Car({
@@ -9,21 +10,28 @@ export function DMoroz (ceh, map) {
   map.geoObjects.add(ded)
 
   var points = [
+    [[58.5228, 31.2699], ceh['Великий Новгород'].coords],
     [ceh['Великий Новгород'].coords, ceh['Залучье'].coords],
     [ceh['Залучье'].coords, ceh['Пролетарий'].coords],
     [ceh['Пролетарий'].coords, ceh['Боровичи'].coords]
   ]
 
+  var targetCehs = ['Великий Новгород', 'Залучье', 'Пролетарий', 'Боровичи']
+
   function delay (fn, ms) {
-    return function() {
+    return function () {
       setTimeout(() => {
         fn.apply(this, arguments)
       }, ms)
     }
   }
 
-  var stopJumping = delay(function (geoObject) {
+  var launchCehs = delay(function (geoObject, i) {
+    //Останавливаем скачущего Деда
     geoObject.properties.set('direction', '')
+
+    // Рисуем маршруты (линии) от цехов до пунктов
+    createRoutes(ceh, targetCehs[i], map)
   }, 1000)
 
   // Для отладки дёргания Деда
@@ -37,6 +45,8 @@ export function DMoroz (ceh, map) {
   //   n: '↑',
   //   nw: '↖'
   // }
+
+  var i = 0
 
   // Добавляем рекурсивную функцию перемещения по точкам
   function addDedRoute (points) {
@@ -60,7 +70,7 @@ export function DMoroz (ceh, map) {
           },
           function (geoObject) {
             geoObject.properties.set('direction', 'jump')
-            stopJumping(geoObject)
+            launchCehs(geoObject, i++)
 
             var nextCall = delay(addDedRoute, 1500)
             nextCall(points)

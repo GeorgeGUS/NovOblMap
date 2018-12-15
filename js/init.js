@@ -83,9 +83,6 @@ function init () {
 
   console.log(ceh)
 
-  // Рисуем маршруты (линии) от цехов до пунктов
-  createRoutes(ceh, 'Великий Новгород', myMap)
-
   // Вставляем гуляющего по карте Деда Мороза
   DMoroz(ceh, myMap)
 }
