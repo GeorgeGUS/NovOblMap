@@ -26,6 +26,18 @@ export function DMoroz (cehCoords, map) {
     geoObject.properties.set('direction', '')
   }, 1000)
 
+  // Для отладки дёргания Деда
+  // var arrows = {
+  //   w: '←',
+  //   sw: '↙',
+  //   s: '↓',
+  //   se: '↘',
+  //   e: '→',
+  //   ne: '↗',
+  //   n: '↑',
+  //   nw: '↖'
+  // }
+
   // Добавляем рекурсивную функцию перемещения по точкам
   function addDedRoute (points) {
     if (points.length == 0) {
@@ -42,6 +54,7 @@ export function DMoroz (cehCoords, map) {
             directions: 8
           },
           function (geoObject, coords, direction) {
+            // console.log(arrows[direction.t])
             geoObject.geometry.setCoordinates(coords)
             geoObject.properties.set('direction', direction.t)
           },
@@ -57,7 +70,7 @@ export function DMoroz (cehCoords, map) {
     }
   }
 
-  var startDedWalking = delay(addDedRoute, 5000)
+  var startDedWalking = delay(addDedRoute, 3000)
 
   // Запускаем Деда Мороза гулять через 5 секунд.
   startDedWalking(points)

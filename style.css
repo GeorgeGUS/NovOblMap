@@ -72,17 +72,17 @@ body {
     background-size: contain;
 }
 
+.ded-n,
 .ded-se,
 .ded-e,
-.ded-ne,
-.ded-n {
+.ded-ne {
     background-image: url('./img/DMoroz_forward.gif');
 }
 
+.ded-s,
 .ded-nw,
 .ded-w,
-.ded-sw,
-.ded-s {
+.ded-sw {
     background-image: url('./img/DMoroz_backward.gif');
 }
 

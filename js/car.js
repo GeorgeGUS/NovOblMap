@@ -65,6 +65,7 @@ export var Car = (function () {
     }
   }
 
+  //TODO: Оставить на всякий случай для примера
   var defaultMovingCallback = function (geoObject, coords, direction) {
     // действие по умолчанию
     // перемещаем машинку
@@ -226,8 +227,7 @@ export var Car = (function () {
         // берем следующую точку
         var nextPoint = this.waypoints.shift()
         // и отправляем в пользовательский callback
-        ;(movingCallback ||
-          defaultMovingCallback)(this, nextPoint.coords, nextPoint.direction)
+        movingCallback(this, nextPoint.coords, nextPoint.direction)
       }, 42)
     }
 
