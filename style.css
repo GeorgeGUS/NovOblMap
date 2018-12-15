@@ -66,7 +66,7 @@ body {
     height: 83px;
     margin-left: -34px;
     margin-top: -77px;
-    background-image: url('./img/DMoroz_forward.gif');
+    background-image: url('./img/DMoroz.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -89,5 +89,5 @@ body {
 .ded-jump {
     height: 125px;
     margin-top: -120px;
-    background-image: url('./img/DMoroz_jumping.gif');
+    background-image: url('./img/DMoroz_jumping-infinity.gif');
 }
