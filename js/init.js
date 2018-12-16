@@ -1,5 +1,5 @@
 import { data } from './data'
-import { createRoutes } from './routes'
+import { drawPins } from './pins'
 import { DMoroz } from './dmoroz'
 
 ymaps.ready(init)
@@ -18,28 +18,9 @@ function init () {
   // Запретить манипуляции с картой
   myMap.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom'])
 
-  var PinLabelClass = ymaps.templateLayoutFactory.createClass(
-    '<div class="pin $[properties.balloonContent]">{{ properties.iconCaption }}</div>'
-  )
+  
 
-  function drawPins (data, isActive) {
-    var activeClass = isActive ? 'active' : ''
-    for (var pin of data) {
-      var myPlacemark = new ymaps.Placemark(
-        [pin.lat, pin.len],
-        {
-          balloonContent: activeClass,
-          iconCaption: pin.name
-        },
-        {
-          iconLayout: PinLabelClass
-        }
-      )
-      myMap.geoObjects.add(myPlacemark)
-    }
-  }
-
-  drawPins(data)
+  drawPins(myMap, data)
 
   // Рисует Новгородскую область
   ymaps.borders.load('RU', { quality: 2 }).then(

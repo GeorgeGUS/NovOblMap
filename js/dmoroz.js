@@ -1,5 +1,6 @@
 import { Car } from './car'
-import { createRoutes } from './routes'
+import { drawRoutes } from './routes'
+import { drawPins } from './pins'
 
 export function DMoroz (ceh, map) {
   var ded = new Car({
@@ -31,7 +32,13 @@ export function DMoroz (ceh, map) {
     geoObject.properties.set('direction', '')
 
     // Рисуем маршруты (линии) от цехов до пунктов
-    createRoutes(ceh, targetCehs[i], map)
+    drawRoutes(ceh, targetCehs[i], map)
+
+    // Рисуем активные пины поверх старых
+    drawPins(map, ceh[targetCehs[i]].pins, true)
+
+    // Добавляем нового Деда, чтобы он был сверху
+    map.geoObjects.add(ded)
   }, 1000)
 
   // Для отладки дёргания Деда

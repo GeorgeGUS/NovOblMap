@@ -1,4 +1,4 @@
-export function createRoutes (ceh, cehName, myMap) {
+export function drawRoutes (ceh, cehName, myMap) {
   // Проводим прямые линии от головных цехов до их пунктов
   // data.forEach((pin, i) => {
   //   var myPolyline = new ymaps.Polyline(
@@ -23,7 +23,7 @@ export function createRoutes (ceh, cehName, myMap) {
         strokeWidth: 7,
         strokeColor: '#87cefa'
       })
-      
+
       myMap.geoObjects.add(onlyRoute)
     })
   })
