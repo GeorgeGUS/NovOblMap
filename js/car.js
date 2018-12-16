@@ -42,10 +42,11 @@ export var Car = (function () {
         'nww'
       ],
       8: ['w', 'sw', 's', 'se', 'e', 'ne', 'n', 'nw'],
-      4: ['w', 's', 'e', 'n']
+      4: ['w', 's', 'e', 'n'],
+      2: ['w', 'e']
     },
     n: function (x, y, n) {
-      n = n || 8
+      //   n = n || 8
       var n2 = n >> 1 // half of n
       var number =
         (Math.floor((Math.atan2(x, y) / Math.PI) * n2 + 1 / n) + n2) % n // seems like there is a little bug here
@@ -62,10 +63,14 @@ export var Car = (function () {
     4: function (x, y) {
       // -> values in range [0, 4]
       return directionsVariants.n(x, y, 4)
+    },
+    2: function (x, y) {
+      // -> values in range [0, 4]
+      return directionsVariants.n(x, y, 2)
     }
   }
 
-  //TODO: Оставить на всякий случай для примера
+  // TODO: Оставить на всякий случай для примера
   var defaultMovingCallback = function (geoObject, coords, direction) {
     // действие по умолчанию
     // перемещаем машинку
@@ -87,7 +92,7 @@ export var Car = (function () {
   var makeWayPointsFromSegments = function (segments, options) {
     options = options || {}
     options.directions =
-      [4, 8, 16].indexOf(options.directions) >= 0 ? options.directions : 8 // must be 4, 8, or 16
+      [2, 4, 8, 16].indexOf(options.directions) >= 0 ? options.directions : 8 // must be 4, 8, or 16
     options.speed = options.speed || 6
 
     var points
@@ -216,7 +221,29 @@ export var Car = (function () {
       options.speed =
         options.speed || Math.round(1000 / this.getMap().getZoom())
       // Получаем точечки
-      this.waypoints = makeWayPointsFromSegments(segments, options)
+      var waypoints = makeWayPointsFromSegments(segments, options)
+      var buffer = []
+      // Задаём значение, уменьшающее количество переключений направлений
+      var MAX_BUFFER_LENGTH = 20
+
+      this.waypoints = waypoints.map((point, i) => {
+        buffer.push(point)
+
+        if (
+          buffer.length >= 2 &&
+          point.direction.t !== buffer[buffer.length - 2].direction.t
+        ) {
+          if (buffer.length > MAX_BUFFER_LENGTH) {
+            buffer = [point]
+          } else {
+            point.direction.t = buffer[buffer.length - 2].direction.t
+            buffer.splice(buffer.length - 1, 1, point)
+          }
+        }
+
+        return buffer[buffer.length - 1]
+      })
+
       // Запуск анимации
       var timer = setInterval(() => {
         // если точек больше нет - значит приехали

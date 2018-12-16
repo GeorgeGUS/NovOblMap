@@ -45,16 +45,16 @@ export function DMoroz (ceh, map) {
   }, 1000)
 
   // Для отладки дёргания Деда
-  // var arrows = {
-  //   w: '←',
-  //   sw: '↙',
-  //   s: '↓',
-  //   se: '↘',
-  //   e: '→',
-  //   ne: '↗',
-  //   n: '↑',
-  //   nw: '↖'
-  // }
+  var arrows = {
+    w: '←',
+    sw: '↙',
+    s: '↓',
+    se: '↘',
+    e: '→',
+    ne: '↗',
+    n: '↑',
+    nw: '↖'
+  }
 
   var i = 0
 
@@ -71,7 +71,7 @@ export function DMoroz (ceh, map) {
             .getSegments(),
           {
             speed: 3000,
-            directions: 8
+            directions: 2
           },
           function (geoObject, coords, direction) {
             // console.log(arrows[direction.t])
