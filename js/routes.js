@@ -20,7 +20,7 @@ export function drawRoutes (ceh, cehName, myMap) {
     ymaps.route([ceh[cehName].coords, [pin.lat, pin.len]]).then(function (route) {
       var onlyRoute = route.getPaths()
       onlyRoute.options.set({
-        strokeWidth: 7,
+        strokeWidth: 6,
         strokeColor: '#87cefa'
       })
 

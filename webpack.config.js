@@ -44,21 +44,21 @@ module.exports = {
   },
 
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    }),
     new FaviconsWebpackPlugin({
       logo: './ded-icon.png',
       persistentCache: true,
-      inject: true,
+      inject: false,
       title: 'Walking Ded Moroz',
       icons: {
         android: false,
         appleIcon: false,
         appleStartup: false,
         favicons: true,
-        firefox: false
+        firefox: false,
       }
-    }),
-    new HtmlWebpackPlugin({
-      template: './index.html'
     }),
     new BrowserSyncPlugin({
       host: 'localhost',
