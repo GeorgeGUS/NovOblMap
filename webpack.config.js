@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports = {
@@ -43,6 +44,19 @@ module.exports = {
   },
 
   plugins: [
+    new FaviconsWebpackPlugin({
+      logo: './ded-icon.png',
+      persistentCache: true,
+      inject: true,
+      title: 'Walking Ded Moroz',
+      icons: {
+        android: false,
+        appleIcon: false,
+        appleStartup: false,
+        favicons: true,
+        firefox: false
+      }
+    }),
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
