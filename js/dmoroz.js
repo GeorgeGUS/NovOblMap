@@ -90,8 +90,8 @@ export function DMoroz (ceh, map) {
     }
   }
 
-  var startDedWalking = delay(addDedRoute, 3000)
+  var startDedWalking = delay(addDedRoute, 200)
 
-  // Запускаем Деда Мороза гулять через 5 секунд.
+  // Запускаем Деда Мороза гулять через 0.2 секунд.
   startDedWalking(points)
 }
