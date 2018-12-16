@@ -1,3 +1,4 @@
+import '../style.css'
 import { data } from './data'
 import { drawPins } from './pins'
 import { DMoroz } from './dmoroz'
