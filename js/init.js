@@ -62,8 +62,15 @@ function init () {
     }
   })
 
-  console.log(ceh)
+  var isDedWalking = false;
 
   // Вставляем гуляющего по карте Деда Мороза
-  DMoroz(ceh, myMap)
+  function onEnterPress(evt) {
+    if(evt.key === 'Enter' && !isDedWalking) {
+      isDedWalking = true;
+      DMoroz(ceh, myMap)
+    }
+  }
+
+  window.addEventListener('keydown', onEnterPress)
 }
