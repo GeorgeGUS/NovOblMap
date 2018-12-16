@@ -33,10 +33,10 @@ function init () {
       var feature = geojson.features[NOV_OBL_INDEX]
       feature.id = feature.properties.iso3166
       feature.options = {
-        strokeWidth: 3,
+        strokeWidth: 4,
         strokeColor: '#ff4500',
         strokeOpacity: 0.6,
-        fillColor: '#ffd500',
+        fillColor: '#ffd530',
         fillOpacity: 0.4,
         openHintOnHover: false
       }
