@@ -28,17 +28,20 @@ export function DMoroz (ceh, map) {
   }
 
   var launchCehs = delay(function (geoObject, i) {
-    //Останавливаем скачущего Деда
+    // Останавливаем скачущего Деда
     geoObject.properties.set('direction', '')
 
     // Рисуем маршруты (линии) от цехов до пунктов
     drawRoutes(ceh, targetCehs[i], map)
 
-    // Рисуем активные пины поверх старых
-    drawPins(map, ceh[targetCehs[i]].pins, true)
+    // Рисуем активные пины поверх старых (с небольшой задержкой)
+    var drawPinsAndDed = delay(function (i) {
+      drawPins(map, ceh[targetCehs[i]].pins, true)
+      // Добавляем нового Деда, чтобы он был сверху
+      map.geoObjects.add(ded)
+    }, 200)
 
-    // Добавляем нового Деда, чтобы он был сверху
-    map.geoObjects.add(ded)
+    drawPinsAndDed(i)
   }, 1000)
 
   // Для отладки дёргания Деда
