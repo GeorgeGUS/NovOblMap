@@ -2,11 +2,12 @@ import '../style.css'
 import { data } from './data'
 import { drawArea } from './area'
 import { drawPins } from './pins'
+import { drawDed } from './Ded'
 import { DMoroz } from './dmoroz'
 
 ymaps.ready(init)
 function init () {
-  var myMap = new ymaps.Map(
+  global.myMap = new ymaps.Map(
     'map',
     {
       center: [58.19421684348514, 32.92976749999997],
@@ -40,15 +41,7 @@ function init () {
     }
   })
 
-  var isDedWalking = false
+  drawDed(myMap, [59, 29.7], true)
 
-  // Вставляем гуляющего по карте Деда Мороза
-  function onEnterPress (evt) {
-    if (evt.key === 'Enter' && !isDedWalking) {
-      isDedWalking = true
-      DMoroz(ceh, myMap)
-    }
-  }
-
-  window.addEventListener('keydown', onEnterPress)
+  DMoroz(ceh, myMap)
 }

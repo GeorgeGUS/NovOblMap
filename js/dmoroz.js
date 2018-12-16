@@ -1,4 +1,5 @@
 import { Car } from './car'
+import { utils } from './utils'
 import { drawRoutes } from './routes'
 import { drawPins } from './pins'
 
@@ -16,6 +17,12 @@ export function DMoroz (ceh, map) {
     [ceh['Залучье'].coords, ceh['Пролетарий'].coords],
     [ceh['Пролетарий'].coords, ceh['Боровичи'].coords]
   ]
+
+  // Преобразуем географические координаты в пиксели окна браузера
+  var dedStartCoords = utils.converterCoords(points[0][0])
+  var dedEndCoords = utils.converterCoords(points[points.length - 1][1])
+  console.log(dedStartCoords, dedEndCoords)
+
 
   var targetCehs = ['Великий Новгород', 'Залучье', 'Пролетарий', 'Боровичи']
 
@@ -91,7 +98,16 @@ export function DMoroz (ceh, map) {
   }
 
   var startDedWalking = delay(addDedRoute, 200)
+  var isDedWalking = false
 
-  // Запускаем Деда Мороза гулять через 0.2 секунд.
-  startDedWalking(points)
+  // Вставляем гуляющего по карте Деда Мороза
+  function onEnterPress (evt) {
+    if (evt.key === 'Enter' && !isDedWalking) {
+      isDedWalking = true
+      // Запускаем Деда Мороза гулять через 0.2 секунд.
+      startDedWalking(points)
+    }
+  }
+
+  window.addEventListener('keydown', onEnterPress)
 }
