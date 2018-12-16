@@ -2,7 +2,6 @@ import '../style.css'
 import { data } from './data'
 import { drawArea } from './area'
 import { drawPins } from './pins'
-import { drawDed } from './Ded'
 import { DMoroz } from './dmoroz'
 
 ymaps.ready(init)
@@ -40,8 +39,6 @@ function init () {
       ceh[pin.ceh].coords = [pin.lat, pin.len]
     }
   })
-
-  drawDed([59, 29.7], true)
 
   DMoroz(ceh)
 }
