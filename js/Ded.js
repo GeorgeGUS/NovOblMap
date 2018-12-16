@@ -1,4 +1,4 @@
-export function drawDed (myMap, coords, isBig) {
+export function drawDed (coords, isBig) {
   var dedLayout = ymaps.templateLayoutFactory.createClass(
     '<div class="ded ded-$[properties.size]"></div>'
   )

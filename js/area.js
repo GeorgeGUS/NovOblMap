@@ -1,4 +1,4 @@
-export function drawArea (myMap) {
+export function drawArea () {
   ymaps.borders.load('RU', { quality: 2 }).then(
     function (geojson) {
       const NOV_OBL_INDEX = 32

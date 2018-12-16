@@ -1,4 +1,4 @@
-export function drawPins (myMap, data, isActive) {
+export function drawPins (data, isActive) {
   var PinLabelClass = ymaps.templateLayoutFactory.createClass(
     '<div class="pin $[properties.balloonContent]">{{ properties.iconCaption }}</div>'
   )

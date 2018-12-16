@@ -3,13 +3,13 @@ import { utils } from './utils'
 import { drawRoutes } from './routes'
 import { drawPins } from './pins'
 
-export function DMoroz (ceh, map) {
+export function DMoroz (ceh) {
   var ded = new Car({
     iconLayout: ymaps.templateLayoutFactory.createClass(
       '<div class="ded ded-$[properties.direction]"></div>'
     )
   })
-  map.geoObjects.add(ded)
+  myMap.geoObjects.add(ded)
 
   var points = [
     [[58.5228, 31.2699], ceh['Великий Новгород'].coords],
@@ -39,13 +39,13 @@ export function DMoroz (ceh, map) {
     geoObject.properties.set('direction', '')
 
     // Рисуем маршруты (линии) от цехов до пунктов
-    drawRoutes(ceh, targetCehs[i], map)
+    drawRoutes(ceh, targetCehs[i])
 
     // Рисуем активные пины поверх старых (с небольшой задержкой)
     var drawPinsAndDed = delay(function (i) {
-      drawPins(map, ceh[targetCehs[i]].pins, true)
+      drawPins(ceh[targetCehs[i]].pins, true)
       // Добавляем нового Деда, чтобы он был сверху
-      map.geoObjects.add(ded)
+      myMap.geoObjects.add(ded)
     }, 200)
 
     drawPinsAndDed(i)

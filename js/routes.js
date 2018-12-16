@@ -1,4 +1,4 @@
-export function drawRoutes (ceh, cehName, myMap) {
+export function drawRoutes (ceh, cehName) {
   // Проводим прямые линии от головных цехов до их пунктов
   // data.forEach((pin, i) => {
   //   var myPolyline = new ymaps.Polyline(

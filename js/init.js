@@ -22,10 +22,10 @@ function init () {
   myMap.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom'])
 
   // Рисует Новгородскую область
-  drawArea(myMap)
+  drawArea()
 
   // Рисует объекты ЦТВ
-  drawPins(myMap, data)
+  drawPins(data)
 
   // Получаем объект цехов с их координатами и принадлежащими пунктами
   var ceh = {}
@@ -41,7 +41,7 @@ function init () {
     }
   })
 
-  drawDed(myMap, [59, 29.7], true)
+  drawDed([59, 29.7], true)
 
-  DMoroz(ceh, myMap)
+  DMoroz(ceh)
 }
