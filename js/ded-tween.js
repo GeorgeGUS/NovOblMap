@@ -4,7 +4,7 @@ export function dedTween (dedCoords, dedLaunch) {
   var tl = new TimelineLite({ paused: true })
   var DED_CLASS = '.ded-big'
   var canvas = document.getElementById('canvas')
-  var btn1 = canvas.querySelector('#btn1')
+  var dedLaunchBtn = canvas.querySelector('#ded-launch-btn')
   var dedStartPos = { x: 300, y: 0 }
   var dedMapStartPos = { x: dedCoords.start[0], y: dedCoords.start[1] }
   var dedMapEndPos = { x: dedCoords.end[0], y: dedCoords.end[1] }
@@ -30,10 +30,21 @@ export function dedTween (dedCoords, dedLaunch) {
     dedLaunch()
   }
 
-  btn1.addEventListener('click', function () {
+  // Вставляем гуляющего по карте Деда Мороза
+  var isDedWalking = false
+
+  dedLaunchBtn.addEventListener('click', function () {
     if (!isDedWalking) {
       isDedWalking = true
       tl.restart()
     }
   })
+
+  function onEnterPress (evt) {
+    if (evt.key === 'Enter' && !isDedWalking) {
+      isDedWalking = true
+      tl.restart()
+    }
+  }
+  window.addEventListener('keydown', onEnterPress)
 }

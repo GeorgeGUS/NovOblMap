@@ -80,23 +80,9 @@ export function DMoroz (ceh) {
     }
   }
 
-  var startDedWalking = utils.delay(addDedRoute, 1000)
-
-  // Вставляем гуляющего по карте Деда Мороза
-  global.isDedWalking = false
-  function onEnterPress (evt) {
-    if (evt.key === 'Enter' && !isDedWalking) {
-      isDedWalking = true
-      // Запускаем Деда Мороза гулять
-      startDedWalking(points)
-    }
-  }
-
   function dedLaunch () {
     addDedRoute(points)
   }
 
   dedTween(dedCoords, dedLaunch)
-
-  window.addEventListener('keydown', onEnterPress)
 }

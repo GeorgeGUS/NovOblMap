@@ -20,7 +20,7 @@ function init () {
   )
 
   // Запретить манипуляции с картой
-  // myMap.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom'])
+  myMap.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom'])
 
   // Рисует Новгородскую область
   drawArea()

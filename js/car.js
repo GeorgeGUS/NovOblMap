@@ -1,4 +1,4 @@
-import { utils } from "./utils";
+import { utils } from './utils'
 
 /**
  * fileOverview Класс анимированной машинки
@@ -172,7 +172,6 @@ export var Car = (function () {
     return wayList
   }
 
-
   /**
    * Класс машинки.
    * TODO: make it a geoObject with right interface.
@@ -184,7 +183,7 @@ export var Car = (function () {
     var properties = {
       // Описываем геометрию типа "Точка".
       geometry: {
-        type: 'Point',
+        type: 'Point'
         // coordinates: [59.025, 29.58797]
       }
     }
