@@ -2,7 +2,6 @@ import '../style.css'
 import { data } from './data'
 import { drawArea } from './area'
 import { drawPins } from './pins'
-import { dedTween } from './ded-tween'
 
 ymaps.ready(init)
 
@@ -22,12 +21,9 @@ function init () {
   // Запретить манипуляции с картой
   myMap.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom'])
 
-  // Рисует Новгородскую область
-  drawArea()
+  // Рисует Новгородскую область и инициируем Деда Мороза
+  drawArea(data)
 
   // Рисует объекты ЦТВ
   drawPins(data)
-
-  // Инициируем Деда Мороза
-  dedTween(data)
 }

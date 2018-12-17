@@ -25,6 +25,27 @@ body {
     background-size: 17vw;
 }
 
+.point {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: -10px;
+    top: -10px;
+    border-radius: 50%;
+    border: 2px solid;
+    box-shadow: 0 0 0 2px #fff;
+}
+
+.point::after {
+    content: '';
+    border: 2px solid;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #fff;
+}
+
 /* Для скрытия логотипа Яндекса на карте */
 #map::before,
 #map::after {

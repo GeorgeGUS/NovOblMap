@@ -56,7 +56,7 @@ export function DMoroz (data) {
 
     // Если все цеха запущены, отправляем колбэк
     if (i + 1 === targetCehs.length) {
-      alert('Карта запущена')
+      console.log('Карта запущена')
     }
   }, 1000)
 
