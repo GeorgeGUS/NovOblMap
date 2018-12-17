@@ -1,3 +1,5 @@
+import { utils } from "./utils";
+
 /**
  * fileOverview Класс анимированной машинки
  * @see http://ymlib.narod.ru/1.1/demos/animate.html
@@ -170,6 +172,7 @@ export var Car = (function () {
     return wayList
   }
 
+
   /**
    * Класс машинки.
    * TODO: make it a geoObject with right interface.
@@ -182,7 +185,7 @@ export var Car = (function () {
       // Описываем геометрию типа "Точка".
       geometry: {
         type: 'Point',
-        coordinates: [55.75062, 37.62561]
+        // coordinates: [59.025, 29.58797]
       }
     }
     var result = new ymaps.GeoObject(properties, options)

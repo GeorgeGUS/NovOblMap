@@ -1,7 +1,8 @@
 import { Car } from './car'
-import { utils } from './utils'
 import { drawRoutes } from './routes'
 import { drawPins } from './pins'
+import { utils } from './utils'
+import { dedTween } from './ded-tween'
 
 export function DMoroz (ceh) {
   var ded = new Car({
@@ -19,10 +20,12 @@ export function DMoroz (ceh) {
   ]
 
   // Преобразуем географические координаты в пиксели окна браузера
-  var dedStartCoords = utils.converterCoords(points[0][0])
-  var dedEndCoords = utils.converterCoords(points[points.length - 1][1])
-  console.log(dedStartCoords, dedEndCoords)
-  
+  var dedCoords = {
+    start: utils.converterCoords(points[0][0]),
+    end: utils.converterCoords(points[points.length - 1][1])
+  }
+  console.log(dedCoords.start, dedCoords.end)
+
   var targetCehs = ['Великий Новгород', 'Залучье', 'Пролетарий', 'Боровичи']
 
   var i = 0
@@ -77,10 +80,10 @@ export function DMoroz (ceh) {
     }
   }
 
-  var startDedWalking = utils.delay(addDedRoute, 200)
+  var startDedWalking = utils.delay(addDedRoute, 1000)
 
   // Вставляем гуляющего по карте Деда Мороза
-  var isDedWalking = false
+  global.isDedWalking = false
   function onEnterPress (evt) {
     if (evt.key === 'Enter' && !isDedWalking) {
       isDedWalking = true
@@ -88,6 +91,12 @@ export function DMoroz (ceh) {
       startDedWalking(points)
     }
   }
+
+  function dedLaunch () {
+    addDedRoute(points)
+  }
+
+  dedTween(dedCoords, dedLaunch)
 
   window.addEventListener('keydown', onEnterPress)
 }

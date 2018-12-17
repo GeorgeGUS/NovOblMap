@@ -5,6 +5,7 @@ import { drawPins } from './pins'
 import { DMoroz } from './dmoroz'
 
 ymaps.ready(init)
+
 function init () {
   global.myMap = new ymaps.Map(
     'map',
@@ -17,8 +18,9 @@ function init () {
       avoidFractionalZoom: false // Разрешает дробное значение зума
     }
   )
+
   // Запретить манипуляции с картой
-  myMap.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom'])
+  // myMap.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom'])
 
   // Рисует Новгородскую область
   drawArea()

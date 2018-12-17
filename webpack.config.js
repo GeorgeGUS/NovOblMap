@@ -1,10 +1,25 @@
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports = {
   mode: 'production',
-  
+
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
+
   devtool: 'source-map',
 
   entry: './js/init',
@@ -16,7 +31,6 @@ module.exports = {
 
   module: {
     rules: [
-      // { test: /\.json$/, loader: 'json-loader' },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
@@ -29,7 +43,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
@@ -46,6 +60,7 @@ module.exports = {
   },
 
   plugins: [
+    new CleanWebpackPlugin(['docs']),
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
@@ -61,6 +76,10 @@ module.exports = {
         favicons: true,
         firefox: false
       }
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     }),
     new BrowserSyncPlugin({
       host: 'localhost',

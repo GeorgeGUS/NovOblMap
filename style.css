@@ -4,8 +4,18 @@ body {
 }
 
 #map {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: initial;
 }
 
 /* Для скрытия логотипа Яндекса на карте */
@@ -70,6 +80,26 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+}
+
+.ded-big {
+    position: absolute;
+    margin-top: -95px;
+    transform: translateY(-100%) scale(2);
+    transform-origin: center bottom;
+}
+
+.ded-big::before {
+    content: '';
+    position: absolute;
+    top: -67px;
+    left: -42px;
+    width: 110px;
+    height: 150px;
+    background-image: url('./img/DMoroz.png'), url('./img/parasuite.png');
+    background-repeat: no-repeat;
+    background-position: right bottom, left top;
+    background-size: 68px, 100px;
 }
 
 .ded-n,
