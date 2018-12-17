@@ -4,5 +4,12 @@ export const utils = {
     return myMap.converter.globalToPage(
       projection.toGlobalPixels(coords, myMap.getZoom())
     )
+  },
+  delay: function (fn, ms) {
+    return function () {
+      setTimeout(() => {
+        fn.apply(this, arguments)
+      }, ms)
+    }
   }
 }

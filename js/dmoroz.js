@@ -22,27 +22,21 @@ export function DMoroz (ceh) {
   var dedStartCoords = utils.converterCoords(points[0][0])
   var dedEndCoords = utils.converterCoords(points[points.length - 1][1])
   console.log(dedStartCoords, dedEndCoords)
-
-
+  
   var targetCehs = ['Великий Новгород', 'Залучье', 'Пролетарий', 'Боровичи']
 
-  function delay (fn, ms) {
-    return function () {
-      setTimeout(() => {
-        fn.apply(this, arguments)
-      }, ms)
-    }
-  }
-
-  var launchCehs = delay(function (geoObject, i) {
+  var i = 0
+  // Запускаем цеха через 1 секунду после начала прыжков
+  var launchCehs = utils.delay(function (geoObject, i) {
     // Останавливаем скачущего Деда
     geoObject.properties.set('direction', '')
 
     // Рисуем маршруты (линии) от цехов до пунктов
     drawRoutes(ceh, targetCehs[i])
 
-    // Рисуем активные пины поверх старых (с небольшой задержкой)
-    var drawPinsAndDed = delay(function (i) {
+    // Рисуем активные пины поверх старых
+    // (с небольшой задержкой на отрисовку маршрутов)
+    var drawPinsAndDed = utils.delay(function (i) {
       drawPins(ceh[targetCehs[i]].pins, true)
       // Добавляем нового Деда, чтобы он был сверху
       myMap.geoObjects.add(ded)
@@ -50,20 +44,6 @@ export function DMoroz (ceh) {
 
     drawPinsAndDed(i)
   }, 1000)
-
-  // Для отладки дёргания Деда
-  var arrows = {
-    w: '←',
-    sw: '↙',
-    s: '↓',
-    se: '↘',
-    e: '→',
-    ne: '↗',
-    n: '↑',
-    nw: '↖'
-  }
-
-  var i = 0
 
   // Добавляем рекурсивную функцию перемещения по точкам
   function addDedRoute (points) {
@@ -81,7 +61,6 @@ export function DMoroz (ceh) {
             directions: 2
           },
           function (geoObject, coords, direction) {
-            // console.log(arrows[direction.t])
             geoObject.geometry.setCoordinates(coords)
             geoObject.properties.set('direction', direction.t)
           },
@@ -89,7 +68,8 @@ export function DMoroz (ceh) {
             geoObject.properties.set('direction', 'jump')
             launchCehs(geoObject, i++)
 
-            var nextCall = delay(addDedRoute, 1500)
+            // Делаем паузу в 1.5 секунды на запуск цеха
+            var nextCall = utils.delay(addDedRoute, 1500)
             nextCall(points)
           }
         )
@@ -97,14 +77,14 @@ export function DMoroz (ceh) {
     }
   }
 
-  var startDedWalking = delay(addDedRoute, 200)
-  var isDedWalking = false
+  var startDedWalking = utils.delay(addDedRoute, 200)
 
   // Вставляем гуляющего по карте Деда Мороза
+  var isDedWalking = false
   function onEnterPress (evt) {
     if (evt.key === 'Enter' && !isDedWalking) {
       isDedWalking = true
-      // Запускаем Деда Мороза гулять через 0.2 секунд.
+      // Запускаем Деда Мороза гулять
       startDedWalking(points)
     }
   }

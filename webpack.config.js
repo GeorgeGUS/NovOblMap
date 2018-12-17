@@ -3,7 +3,9 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
+  
+  devtool: 'source-map',
 
   entry: './js/init',
 
@@ -57,7 +59,7 @@ module.exports = {
         appleIcon: false,
         appleStartup: false,
         favicons: true,
-        firefox: false,
+        firefox: false
       }
     }),
     new BrowserSyncPlugin({
