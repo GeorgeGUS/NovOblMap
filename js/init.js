@@ -2,7 +2,7 @@ import '../style.css'
 import { data } from './data'
 import { drawArea } from './area'
 import { drawPins } from './pins'
-import { DMoroz } from './dmoroz'
+import { dedTween } from './ded-tween'
 
 ymaps.ready(init)
 
@@ -28,19 +28,6 @@ function init () {
   // Рисует объекты ЦТВ
   drawPins(data)
 
-  // Получаем объект цехов с их координатами и принадлежащими пунктами
-  var ceh = {}
-  data.forEach(pin => {
-    if (ceh.hasOwnProperty(pin.ceh)) {
-      ceh[pin.ceh].pins.push(pin)
-    } else {
-      ceh[pin.ceh] = { pins: [pin] }
-    }
-
-    if (pin.ceh === pin.name) {
-      ceh[pin.ceh].coords = [pin.lat, pin.len]
-    }
-  })
-
-  DMoroz(ceh)
+  // Инициируем Деда Мороза
+  dedTween(data)
 }

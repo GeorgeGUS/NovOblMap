@@ -9,13 +9,20 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
+    background-color: #edf2e6;
 }
 
 #canvas {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
     cursor: initial;
+    background-image: url('./img/rtrs-logo.png');
+    background-repeat: no-repeat;
+    background-position: 50px 30px;
+    background-size: 17vw;
 }
 
 /* Для скрытия логотипа Яндекса на карте */

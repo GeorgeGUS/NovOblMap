@@ -1,11 +1,22 @@
+import { DMoroz } from './dmoroz'
 import { utils } from './utils'
 
-export function dedTween (dedCoords, dedLaunch) {
+export function dedTween (data) {
   var tl = new TimelineLite({ paused: true })
   var DED_CLASS = '.ded-big'
   var canvas = document.getElementById('canvas')
   var dedLaunchBtn = canvas.querySelector('#ded-launch-btn')
   var dedStartPos = { x: 300, y: 0 }
+
+  var dedLaunch = DMoroz(data)
+
+  // Преобразуем географические координаты в пиксели окна браузера
+  var dedCoords = {
+    start: utils.converterCoords(points[0][0]),
+    end: utils.converterCoords(points[points.length - 1][1])
+  }
+  console.log(dedCoords.start, dedCoords.end)
+
   var dedMapStartPos = { x: dedCoords.start[0], y: dedCoords.start[1] }
   var dedMapEndPos = { x: dedCoords.end[0], y: dedCoords.end[1] }
 
@@ -23,11 +34,13 @@ export function dedTween (dedCoords, dedLaunch) {
   })
   tl.eventCallback('onComplete', launch)
 
+  var launch = utils.delay(dedLaunch, 900)
+
   function launch () {
-    TweenLite.to(DED_CLASS, 0.23, {
+    TweenLite.to(DED_CLASS, 1.1, {
       display: 'none'
     })
-    dedLaunch()
+    launch()
   }
 
   // Вставляем гуляющего по карте Деда Мороза

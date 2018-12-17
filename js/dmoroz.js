@@ -2,9 +2,8 @@ import { Car } from './car'
 import { drawRoutes } from './routes'
 import { drawPins } from './pins'
 import { utils } from './utils'
-import { dedTween } from './ded-tween'
 
-export function DMoroz (ceh) {
+export function DMoroz (data) {
   var ded = new Car({
     iconLayout: ymaps.templateLayoutFactory.createClass(
       '<div class="ded ded-$[properties.direction]"></div>'
@@ -12,19 +11,27 @@ export function DMoroz (ceh) {
   })
   myMap.geoObjects.add(ded)
 
-  var points = [
+  // Получаем объект цехов с их координатами и принадлежащими пунктами
+  var ceh = {}
+  data.forEach(pin => {
+    if (ceh.hasOwnProperty(pin.ceh)) {
+      ceh[pin.ceh].pins.push(pin)
+    } else {
+      ceh[pin.ceh] = { pins: [pin] }
+    }
+
+    if (pin.ceh === pin.name) {
+      ceh[pin.ceh].coords = [pin.lat, pin.len]
+    }
+  })
+
+  // Задаём точки маршрута Деда Мороза
+  global.points = [
     [[58.5228, 31.2699], ceh['Великий Новгород'].coords],
     [ceh['Великий Новгород'].coords, ceh['Залучье'].coords],
     [ceh['Залучье'].coords, ceh['Пролетарий'].coords],
     [ceh['Пролетарий'].coords, ceh['Боровичи'].coords]
   ]
-
-  // Преобразуем географические координаты в пиксели окна браузера
-  var dedCoords = {
-    start: utils.converterCoords(points[0][0]),
-    end: utils.converterCoords(points[points.length - 1][1])
-  }
-  console.log(dedCoords.start, dedCoords.end)
 
   var targetCehs = ['Великий Новгород', 'Залучье', 'Пролетарий', 'Боровичи']
 
@@ -46,6 +53,11 @@ export function DMoroz (ceh) {
     }, 200)
 
     drawPinsAndDed(i)
+
+    // Если все цеха запущены, отправляем колбэк
+    if (i + 1 === targetCehs.length) {
+      alert('Карта запущена')
+    }
   }, 1000)
 
   // Добавляем рекурсивную функцию перемещения по точкам
@@ -80,9 +92,7 @@ export function DMoroz (ceh) {
     }
   }
 
-  function dedLaunch () {
+  return function () {
     addDedRoute(points)
   }
-
-  dedTween(dedCoords, dedLaunch)
 }
