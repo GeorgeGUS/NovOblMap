@@ -27,13 +27,15 @@ export function DMoroz (data) {
 
   // Задаём точки маршрута Деда Мороза
   global.points = [
-    [[58.5228, 31.2699], ceh['Великий Новгород'].coords],
-    [ceh['Великий Новгород'].coords, ceh['Залучье'].coords],
-    [ceh['Залучье'].coords, ceh['Пролетарий'].coords],
+    // [[58.5228, 31.2699], ceh['Великий Новгород'].coords],
+    // [ceh['Великий Новгород'].coords, ceh['Залучье'].coords],
+    // [ceh['Залучье'].coords, ceh['Пролетарий'].coords],
     [ceh['Пролетарий'].coords, ceh['Боровичи'].coords]
   ]
 
-  var targetCehs = ['Великий Новгород', 'Залучье', 'Пролетарий', 'Боровичи']
+  var targetCehs = [
+    // 'Великий Новгород', 'Залучье', 'Пролетарий',
+    'Боровичи']
 
   var i = 0
   // Запускаем цеха через 1 секунду после начала прыжков
@@ -48,16 +50,20 @@ export function DMoroz (data) {
     // (с небольшой задержкой на отрисовку маршрутов)
     var drawPinsAndDed = utils.delay(function (i) {
       drawPins(ceh[targetCehs[i]].pins, true)
-      // Добавляем нового Деда, чтобы он был сверху
-      myMap.geoObjects.add(ded)
+
+      // Если ещё есть цеха, добавляем нового Деда
+      if (i + 1 < targetCehs.length) {
+        myMap.geoObjects.add(ded)
+      } else {
+        console.log('Карта запущена')
+        myMap.geoObjects.remove(ded)
+      }
     }, 200)
 
     drawPinsAndDed(i)
 
     // Если все цеха запущены, отправляем колбэк
-    if (i + 1 === targetCehs.length) {
-      console.log('Карта запущена')
-    }
+    
   }, 1000)
 
   // Добавляем рекурсивную функцию перемещения по точкам

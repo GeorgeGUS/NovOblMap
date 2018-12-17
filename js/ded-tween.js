@@ -32,7 +32,7 @@ export function dedTween (data) {
       ]
     },
     scale: 1,
-    ease: SlowMo.ease.config(0.2, 0.1, false)
+    ease: Sine.easeOut,
   })
   tl.eventCallback('onComplete', launchDed)
 
