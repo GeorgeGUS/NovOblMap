@@ -64,6 +64,7 @@ export function dedTween (data) {
     },
     rotation: '+=360',
     rotationY: 180,
+    scale: 1.5,
     ease: Power2.easeInOut
   })
   tlDeer

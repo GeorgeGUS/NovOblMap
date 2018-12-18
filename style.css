@@ -153,6 +153,7 @@ body {
 .ded-leaving {
     position: absolute;
     margin-top: -95px;
+    transform-origin: center bottom;
 }
 
 .deer {
