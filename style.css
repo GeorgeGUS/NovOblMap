@@ -92,7 +92,6 @@ body {
     width: 3.5vw;
     height: 7.5vh;
     background-image: url('./img/tower-off.png');
-    background-image: url('./img/tower-on_.gif');
     background-repeat: no-repeat;
     background-position: 50% 100%;
     background-size: contain;
