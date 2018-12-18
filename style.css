@@ -104,7 +104,7 @@ body {
     height: 83px;
     margin-left: -35px;
     margin-top: -75px;
-    background-image: url('./img/DMoroz.png');
+    background-image: url('./img/DMoroz.gif');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -124,7 +124,7 @@ body {
     left: -42px;
     width: 110px;
     height: 150px;
-    background-image: url('./img/DMoroz.png'), url('./img/parasuite_.png');
+    background-image: url('./img/DMoroz.gif'), url('./img/parasuite_.png');
     background-repeat: no-repeat;
     background-position: right bottom, left top;
     background-size: 68px, 100px;
@@ -148,4 +148,25 @@ body {
     height: 125px;
     margin-top: -120px;
     background-image: url('./img/DMoroz_jumping-infinity.gif');
+}
+
+.ded-leaving {
+    position: absolute;
+    margin-top: -95px;
+}
+
+.deer {
+    position: absolute;
+    border: 1px solid;
+    visibility: hidden;
+}
+
+.deer::after {
+    content: '';
+    position: absolute;
+    top: -156px;
+    left: -275px;
+    width: 401px;
+    height: 191px;
+    background-image: url('./img/deer-with-sleigh-stay.png');
 }

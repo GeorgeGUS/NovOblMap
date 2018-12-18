@@ -6,14 +6,19 @@ export function updateZoom (zoom) {
 }
 
 export function dedTween (data) {
-  var tl = new TimelineLite({ paused: true })
+  var tlDed = new TimelineLite({ paused: true })
+  var tlDed2 = new TimelineLite({ paused: true })
+  var tlDeer = new TimelineLite({ paused: true })
   var DED_CLASS = '.ded-big'
+  var DED_2_CLASS = '.ded-leaving'
+  var DEER_CLASS = '.deer'
+  var dedNode = document.querySelector(DED_CLASS)
   var canvas = document.getElementById('canvas')
   var dedLaunchBtn = canvas.querySelector('#ded-launch-btn')
   var dedStartPos = { x: 0, y: 0 }
-  TweenLite.set(DED_CLASS, dedStartPos)
+  tlDed.set(DED_CLASS, dedStartPos)
 
-  var dedLaunch = DMoroz(data)
+  var dedLaunch = DMoroz(data, dedNode)
 
   // Преобразуем географические координаты в пиксели окна браузера
   var dedCoords = {
@@ -24,7 +29,7 @@ export function dedTween (data) {
   var dedMapStartPos = { x: dedCoords.start[0], y: dedCoords.start[1] }
   var dedMapEndPos = { x: dedCoords.end[0], y: dedCoords.end[1] }
 
-  tl.to(DED_CLASS, 2.7, {
+  tlDed.to(DED_CLASS, 2.7, {
     bezier: {
       values: [
         { x: dedMapStartPos.x / 1.7, y: dedMapStartPos.y / 2.7 },
@@ -32,17 +37,38 @@ export function dedTween (data) {
       ]
     },
     scale: 1,
-    ease: Sine.easeOut,
+    ease: Sine.easeOut
   })
-  tl.eventCallback('onComplete', launchDed)
-
-  var launch = utils.delay(dedLaunch, 900)
+  tlDed.eventCallback('onComplete', launchDed)
 
   function launchDed () {
-    TweenLite.to(DED_CLASS, 1.1, {
-      display: 'none'
+    tlDed.to(DED_CLASS, 1.1, {
+      visibility: 'hidden'
     })
-    launch()
+    dedLaunch()
+  }
+
+  var deerStartPos = {x: innerWidth + 300, y: innerHeight / 2 + 200 }
+
+  tlDeer.set(DED_2_CLASS, dedMapEndPos)
+  tlDeer.set(DEER_CLASS, deerStartPos)
+  tlDed2.to(DED_2_CLASS, 2.7, {
+    x: dedMapEndPos.x + 300,
+    y: dedMapEndPos.y + 230
+  })
+
+  tlDeer.to(DEER_CLASS, 2.7, {
+    x: dedMapEndPos.x + 300,
+    y: dedMapEndPos.y + 230,
+    visibility: 'visible'
+  })
+
+  function launchDeer () {
+    tlDeer.restart().eventCallback('onComplete', launchDedLeaving)
+  }
+
+  function launchDedLeaving () {
+    tlDed2.restart()
   }
 
   // Вставляем гуляющего по карте Деда Мороза
@@ -51,15 +77,18 @@ export function dedTween (data) {
   dedLaunchBtn.addEventListener('click', function () {
     if (!isDedWalking) {
       isDedWalking = true
-      tl.restart()
+      tlDed.restart()
     }
   })
 
   function onEnterPress (evt) {
     if (evt.key === 'Enter' && !isDedWalking) {
       isDedWalking = true
-      tl.restart()
+      tlDed.restart()
     }
   }
+
+  dedNode.addEventListener('click', launchDeer)
+
   window.addEventListener('keydown', onEnterPress)
 }

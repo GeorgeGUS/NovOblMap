@@ -3,7 +3,7 @@ import { drawRoutes } from './routes'
 import { drawPins } from './pins'
 import { utils } from './utils'
 
-export function DMoroz (data) {
+export function DMoroz (data, dedNode) {
   var ded = new Car({
     iconLayout: ymaps.templateLayoutFactory.createClass(
       '<div class="ded ded-$[properties.direction]"></div>'
@@ -27,15 +27,17 @@ export function DMoroz (data) {
 
   // Задаём точки маршрута Деда Мороза
   global.points = [
-    // [[58.5228, 31.2699], ceh['Великий Новгород'].coords],
+    [[58.5228, 31.2699], ceh['Великий Новгород'].coords],
     // [ceh['Великий Новгород'].coords, ceh['Залучье'].coords],
     // [ceh['Залучье'].coords, ceh['Пролетарий'].coords],
     [ceh['Пролетарий'].coords, ceh['Боровичи'].coords]
   ]
 
   var targetCehs = [
-    // 'Великий Новгород', 'Залучье', 'Пролетарий',
-    'Боровичи']
+    'Великий Новгород',
+    // 'Залучье', 'Пролетарий',
+    'Боровичи'
+  ]
 
   var i = 0
   // Запускаем цеха через 1 секунду после начала прыжков
@@ -57,13 +59,14 @@ export function DMoroz (data) {
       } else {
         console.log('Карта запущена')
         myMap.geoObjects.remove(ded)
+        var evt = new Event('click')
+        dedNode.dispatchEvent(evt)
       }
     }, 200)
 
     drawPinsAndDed(i)
 
     // Если все цеха запущены, отправляем колбэк
-    
   }, 1000)
 
   // Добавляем рекурсивную функцию перемещения по точкам
