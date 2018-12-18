@@ -9,6 +9,7 @@ export function dedTween (data) {
   var tlDed = new TimelineLite({ paused: true })
   var tlDed2 = new TimelineLite({ paused: true })
   var tlDeer = new TimelineLite({ paused: true })
+  var tlLeaving = new TimelineLite({ paused: true })
   var DED_CLASS = '.ded-big'
   var DED_2_CLASS = '.ded-leaving'
   var DEER_CLASS = '.deer'
@@ -29,20 +30,21 @@ export function dedTween (data) {
   var dedMapStartPos = { x: dedCoords.start[0], y: dedCoords.start[1] }
   var dedMapEndPos = { x: dedCoords.end[0], y: dedCoords.end[1] }
 
-  tlDed.to(DED_CLASS, 2.7, {
-    bezier: {
-      values: [
-        { x: dedMapStartPos.x / 1.7, y: dedMapStartPos.y / 2.7 },
-        dedMapStartPos
-      ]
-    },
-    scale: 1,
-    ease: Sine.easeOut
-  })
-  tlDed.eventCallback('onComplete', launchDed)
+  tlDed
+    .to(DED_CLASS, 2.7, {
+      bezier: {
+        values: [
+          { x: dedMapStartPos.x / 1.7, y: dedMapStartPos.y / 2.7 },
+          dedMapStartPos
+        ]
+      },
+      scale: 1,
+      ease: Sine.easeOut
+    })
+    .eventCallback('onComplete', launchDed)
 
   function launchDed () {
-    tlDed.to(DED_CLASS, 1.1, {
+    tlDed.set(DED_CLASS, {
       visibility: 'hidden'
     })
     dedLaunch()
@@ -52,7 +54,7 @@ export function dedTween (data) {
 
   tlDeer.set(DED_2_CLASS, dedMapEndPos)
   tlDeer.set(DEER_CLASS, deerStartPos)
-  
+
   tlDed2.to(DED_2_CLASS, 2.7, {
     bezier: {
       values: [
@@ -60,21 +62,40 @@ export function dedTween (data) {
         { x: dedMapEndPos.x + 300, y: dedMapEndPos.y + 230 }
       ]
     },
-    rotation: "+=360",
+    rotation: '+=360',
     rotationY: 180,
     ease: Power2.easeInOut
   })
-  tlDeer.to(DEER_CLASS, 2.7, {
-    x: dedMapEndPos.x + 300,
-    y: dedMapEndPos.y + 230,
-    visibility: 'visible'
-  }).set(DEER_CLASS, {
-    className: '+=deer-stay'
-  }).eventCallback('onComplete', function() {
-    tlDed2.restart()    
-  })
+  tlDeer
+    .to(DEER_CLASS, 2.7, {
+      x: dedMapEndPos.x + 300,
+      y: dedMapEndPos.y + 230,
+      visibility: 'visible'
+    })
+    .set(DEER_CLASS, {
+      className: '+=deer-stay'
+    })
+    .eventCallback('onComplete', function () {
+      tlDed2.restart().eventCallback('onComplete', function () {
+        tlLeaving.restart()
+      })
+    })
 
-  function launchDeer () {
+  var dedOnSleigh = [DEER_CLASS, DED_2_CLASS]
+
+  tlLeaving
+    .set(dedOnSleigh, {
+      x: dedMapEndPos.x + 300,
+      y: dedMapEndPos.y + 230,
+      className: '-=deer-stay'
+    })
+    .to(dedOnSleigh, 5, {
+      x: -50,
+      y: dedMapEndPos.y + 400,
+      ease: Linear.easeNone
+    })
+
+  function launchLeaving () {
     tlDeer.restart()
   }
 
@@ -95,7 +116,7 @@ export function dedTween (data) {
     }
   }
 
-  dedNode.addEventListener('launchLeaving', launchDeer)
+  dedNode.addEventListener('launchLeaving', launchLeaving)
 
   window.addEventListener('keydown', onEnterPress)
 }
