@@ -87,12 +87,33 @@ body {
     z-index: 10;
     bottom: 100%;
     display: block;
-    width: 65px;
-    height: 100px;
+    /* width: 60px; */
+    /* height: 80px; */
+    width: 3.5vw;
+    height: 7.5vh;
     background-image: url('./img/tower-off.png');
+    background-image: url('./img/tower-on_.gif');
     background-repeat: no-repeat;
     background-position: 50% 100%;
     background-size: contain;
+    /* outline: 1px solid; */
+}
+
+.pin-main::before {
+    width: 4vw;
+    height: 8vh;
+}
+
+@media screen and (max-width: 800px) {
+    .pin {
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .pin {
+        font-size: 0;
+    }
 }
 
 .pin.active::before {

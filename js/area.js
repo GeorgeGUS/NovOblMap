@@ -1,5 +1,4 @@
-import { dedTween } from './ded-tween'
-export function drawArea (data) {
+export function drawArea () {
   ymaps.borders.load('RU', { quality: 2 }).then(
     function (geojson) {
       const NOV_OBL_INDEX = 32
@@ -35,9 +34,10 @@ export function drawArea (data) {
         .then(function (result) {
           // Устанавливаем карте оптимальный центр и зум.
           myMap.setCenter(result.center, result.zoom)
-
-          // Инициируем Деда Мороза
-          dedTween(data)
+          
+          // создаём событие для обновления зума и координат
+          var evt = new Event('updateZoom')
+          window.dispatchEvent(evt)
         })
     },
     function (e) {
