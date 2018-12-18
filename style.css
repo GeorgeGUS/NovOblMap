@@ -91,11 +91,25 @@ body {
     /* height: 80px; */
     width: 3.5vw;
     height: 7.5vh;
-    background-image: url('./img/tower-off.png');
     background-repeat: no-repeat;
     background-position: 50% 100%;
     background-size: contain;
-    /* outline: 1px solid; */
+}
+
+.pin-vn::before {
+    background-image: url('./img/trees/tree.svg');
+}
+
+.pin-pr::before {
+    background-image: url('./img/trees/tree7.svg');
+}
+
+.pin-br::before {
+    background-image: url('./img/trees/tree8.svg');
+}
+
+.pin-zl::before {
+    background-image: url('./img/trees/tree3.svg');
 }
 
 .pin-main {
@@ -121,8 +135,20 @@ body {
     }
 }
 
-.pin.active::before {
-    background-image: url('./img/tower-on_.gif');
+.pin-vn.active::before {
+    background-image: url('./img/antenna-green.svg');
+}
+
+.pin-pr.active::before {
+    background-image: url('./img/antenna-blue.svg');
+}
+
+.pin-br.active::before {
+    background-image: url('./img/antenna-red.svg');
+}
+
+.pin-zl.active::before {
+    background-image: url('./img/antenna-violet.svg');
 }
 
 .ded {
