@@ -25,15 +25,19 @@ export function DMoroz (data, dedNode) {
     }
   })
 
+  function coordsShift(coords) {
+    return [coords[0] - 0.00005, coords[1] - 0.00005]
+  }
+
   // Задаём точки маршрута Деда Мороза
   global.points = [
-    [[58.5228, 31.2699], ceh['Великий Новгород'].coords],
-    [ceh['Великий Новгород'].coords, ceh['Залучье'].coords],
+    [coordsShift(ceh['Боровичи'].coords), ceh['Боровичи'].coords],
+    [ceh['Боровичи'].coords, ceh['Залучье'].coords],
     [ceh['Залучье'].coords, ceh['Пролетарий'].coords],
-    [ceh['Пролетарий'].coords, ceh['Боровичи'].coords]
+    [ceh['Пролетарий'].coords, ceh['Великий Новгород'].coords]
   ]
 
-  var targetCehs = ['Великий Новгород', 'Залучье', 'Пролетарий', 'Боровичи']
+  var targetCehs = ['Боровичи', 'Залучье', 'Пролетарий', 'Великий Новгород']
 
   var i = 0
   // Запускаем цеха через 1 секунду после начала прыжков
