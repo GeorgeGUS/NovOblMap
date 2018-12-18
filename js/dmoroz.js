@@ -59,7 +59,7 @@ export function DMoroz (data, dedNode) {
       } else {
         console.log('Карта запущена')
         myMap.geoObjects.remove(ded)
-        var evt = new Event('click')
+        var evt = new Event('launchLeaving')
         dedNode.dispatchEvent(evt)
       }
     }, 200)

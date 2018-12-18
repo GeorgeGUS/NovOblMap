@@ -48,27 +48,34 @@ export function dedTween (data) {
     dedLaunch()
   }
 
-  var deerStartPos = {x: innerWidth + 300, y: innerHeight / 2 + 200 }
+  var deerStartPos = { x: innerWidth + 300, y: innerHeight / 2 + 200 }
 
   tlDeer.set(DED_2_CLASS, dedMapEndPos)
   tlDeer.set(DEER_CLASS, deerStartPos)
+  
   tlDed2.to(DED_2_CLASS, 2.7, {
-    x: dedMapEndPos.x + 300,
-    y: dedMapEndPos.y + 230
+    bezier: {
+      values: [
+        { x: dedMapEndPos.x + 170, y: dedMapEndPos.y - 70 },
+        { x: dedMapEndPos.x + 300, y: dedMapEndPos.y + 230 }
+      ]
+    },
+    rotation: "+=360",
+    rotationY: 180,
+    ease: Power2.easeInOut
   })
-
   tlDeer.to(DEER_CLASS, 2.7, {
     x: dedMapEndPos.x + 300,
     y: dedMapEndPos.y + 230,
     visibility: 'visible'
+  }).set(DEER_CLASS, {
+    className: '+=deer-stay'
+  }).eventCallback('onComplete', function() {
+    tlDed2.restart()    
   })
 
   function launchDeer () {
-    tlDeer.restart().eventCallback('onComplete', launchDedLeaving)
-  }
-
-  function launchDedLeaving () {
-    tlDed2.restart()
+    tlDeer.restart()
   }
 
   // Вставляем гуляющего по карте Деда Мороза
@@ -88,7 +95,7 @@ export function dedTween (data) {
     }
   }
 
-  dedNode.addEventListener('click', launchDeer)
+  dedNode.addEventListener('launchLeaving', launchDeer)
 
   window.addEventListener('keydown', onEnterPress)
 }
