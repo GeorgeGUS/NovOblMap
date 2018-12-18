@@ -77,8 +77,8 @@ body {
     text-align: center;
     font-weight: bold;
     line-height: 1;
-    color: #333;
-    text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff;
+    color: #333333;
+    text-shadow: 0 0 5px #ffffff, 0 0 5px #ffffff, 0 0 5px #ffffff;
 }
 
 .pin::before {
@@ -98,9 +98,15 @@ body {
     /* outline: 1px solid; */
 }
 
+.pin-main {
+    color: #ffffff;
+    font-size: 1.2em;
+    text-shadow: 0 0 7px #000000, 0 0 7px #000000, 0 0 7px #000000;
+}
+
 .pin-main::before {
-    width: 4vw;
-    height: 8vh;
+    width: 5vw;
+    height: 9vh;
 }
 
 @media screen and (max-width: 800px) {
