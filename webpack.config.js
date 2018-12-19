@@ -15,8 +15,7 @@ module.exports = {
         cache: true,
         parallel: true,
         sourceMap: true // set to true if you want JS source maps
-      }),
-      new OptimizeCSSAssetsPlugin({})
+      })
     ]
   },
 
@@ -43,14 +42,33 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        use: [
+          'css-hot-loader',
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              // modules: true,
+              // sourceMap: true,
+              importLoaders: 3,
+              localIdentName: '[local]'
+            }
+          }
+          // { loader: "file-loader" }
+        ]
+        // use: [
+        //   { loader: "style-loader/url" },
+        //   { loader: "file-loader" }
+        // ]
       },
       {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000
-        }
+        loader: 'file-loader'
+        // loader: 'url-loader',
+        // options: {
+        //   limit: 10000,
+        //   name: 'img/[name]-[sha512:hash:base64:7].[ext]'
+        // }
       }
     ]
   },

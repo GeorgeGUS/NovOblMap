@@ -135,20 +135,24 @@ body {
     }
 }
 
+.pin.active::before {
+    background-size: cover;
+}
+
 .pin-vn.active::before {
-    background-image: url('./img/antenna-green.svg');
+    background-image: url('./img/antenna-all-colors.svg#vn');
 }
 
 .pin-pr.active::before {
-    background-image: url('./img/antenna-violet.svg');
+    background-image: url('./img/antenna-all-colors.svg#pr');
 }
 
 .pin-br.active::before {
-    background-image: url('./img/antenna-red.svg');
+    background-image: url('./img/antenna-all-colors.svg#br');
 }
 
 .pin-zl.active::before {
-    background-image: url('./img/antenna-blue.svg');
+    background-image: url('./img/antenna-all-colors.svg#zl');
 }
 
 .ded {
