@@ -140,7 +140,7 @@ body {
 }
 
 .pin-pr.active::before {
-    background-image: url('./img/antenna-blue.svg');
+    background-image: url('./img/antenna-violet.svg');
 }
 
 .pin-br.active::before {
@@ -148,7 +148,7 @@ body {
 }
 
 .pin-zl.active::before {
-    background-image: url('./img/antenna-violet.svg');
+    background-image: url('./img/antenna-blue.svg');
 }
 
 .ded {

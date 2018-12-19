@@ -13,8 +13,10 @@ export function drawArea () {
         openHintOnHover: false
       }
 
+      
       var objectManager = new ymaps.ObjectManager()
       objectManager.add(feature)
+      console.log('feature',feature)
       myMap.geoObjects.add(objectManager)
 
       var areaCoords = feature.geometry.coordinates[0]
@@ -27,14 +29,14 @@ export function drawArea () {
           mapBounds,
           myMap.container.getSize(),
           {
-            margin: 30,
+            margin: 5,
             preciseZoom: true
           }
         )
         .then(function (result) {
           // Устанавливаем карте оптимальный центр и зум.
           myMap.setCenter(result.center, result.zoom)
-          
+
           // создаём событие для обновления зума и координат
           var evt = new Event('updateZoom')
           window.dispatchEvent(evt)
