@@ -16,7 +16,6 @@ export function drawArea () {
       
       var objectManager = new ymaps.ObjectManager()
       objectManager.add(feature)
-      console.log('feature',feature)
       myMap.geoObjects.add(objectManager)
 
       var areaCoords = feature.geometry.coordinates[0]
