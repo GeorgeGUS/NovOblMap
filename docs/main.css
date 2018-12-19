@@ -140,19 +140,19 @@ body {
 }
 
 .pin-vn.active::before {
-    background-image: url(6cde803cb9457dcac63033173438ef7f.svg#vn);
+    background-image: url(73551994350e7e7ba9bfc4fefab4a397.svg#vn);
 }
 
 .pin-pr.active::before {
-    background-image: url(6cde803cb9457dcac63033173438ef7f.svg#pr);
+    background-image: url(73551994350e7e7ba9bfc4fefab4a397.svg#pr);
 }
 
 .pin-br.active::before {
-    background-image: url(6cde803cb9457dcac63033173438ef7f.svg#br);
+    background-image: url(73551994350e7e7ba9bfc4fefab4a397.svg#br);
 }
 
 .pin-zl.active::before {
-    background-image: url(6cde803cb9457dcac63033173438ef7f.svg#zl);
+    background-image: url(73551994350e7e7ba9bfc4fefab4a397.svg#zl);
 }
 
 .ded {

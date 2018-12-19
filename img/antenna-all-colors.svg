@@ -4,7 +4,7 @@
     </symbol>
     
     <use x="0" y="0" id="icon-green" xlink:href="#antenna" style="color: #3c0"></use>
-    <use x="286" y="0" id="icon-gold" xlink:href="#antenna" style="color: #ffc107"></use>
+    <use x="286" y="0" id="icon-orange" xlink:href="#antenna" style="color: #ff9800"></use>
     <use x="572" y="0" id="icon-violet" xlink:href="#antenna" style="color: #673ab7"></use>
     <use x="858" y="0" id="icon-red" xlink:href="#antenna" style="color: #f44336"></use>
     
