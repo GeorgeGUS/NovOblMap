@@ -214,7 +214,6 @@ body {
 
 .deer {
     position: absolute;
-    border: 1px solid;
     visibility: hidden;
 }
 

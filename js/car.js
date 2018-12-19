@@ -224,6 +224,7 @@ export var Car = (function () {
         options.speed || Math.round(1000 / this.getMap().getZoom())
       // Получаем точечки
       var waypoints = makeWayPointsFromSegments(segments, options)
+      // =======================================================================================
       var buffer = []
       // Задаём значение, уменьшающее количество переключений направлений
       var MAX_BUFFER_LENGTH = 20
@@ -245,6 +246,10 @@ export var Car = (function () {
 
         return buffer[buffer.length - 1]
       })
+      // =======================================================================================
+
+      // НАСТОЯЩИЙ РЕГУЛЯТОР СОРОСТИ ДЕДА
+      var INTERVAL = 8
 
       // Запуск анимации
       var timer = setInterval(() => {
@@ -257,7 +262,7 @@ export var Car = (function () {
         var nextPoint = this.waypoints.shift()
         // и отправляем в пользовательский callback
         movingCallback(this, nextPoint.coords, nextPoint.direction)
-      }, 42)
+      }, INTERVAL)
     }
 
     return result
