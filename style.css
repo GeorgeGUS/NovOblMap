@@ -1,232 +1,277 @@
 body {
-    position: relative;
-    margin: 0;
+  position: relative;
+  margin: 0;
 }
 
 #map {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #edf2e6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #edf2e6;
 }
 
 #canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    cursor: initial;
-    background-image: url('./img/rtrs-logo.png');
-    background-repeat: no-repeat;
-    background-position: 50px 30px;
-    background-size: 17vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  cursor: initial;
+  background-image: url('./img/rtrs-logo.png');
+  background-repeat: no-repeat;
+  background-position: 50px 30px;
+  background-size: 17vw;
 }
 
 .point {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    left: -10px;
-    top: -10px;
-    border-radius: 50%;
-    border: 2px solid;
-    box-shadow: 0 0 0 2px #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: -10px;
+  top: -10px;
+  border-radius: 50%;
+  border: 2px solid;
+  box-shadow: 0 0 0 2px #fff;
 }
 
 .point::after {
-    content: '';
-    border: 2px solid;
-    border-radius: 50%;
-    box-shadow: 0 0 0 2px #fff;
+  content: '';
+  border: 2px solid;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
 }
 
 /* Для скрытия логотипа Яндекса на карте */
+
 #map::before,
 #map::after {
-    content: '';
-    position: absolute;
-    z-index: 1000;
-    bottom: 0;
-    height: 30px;
-    background-color: #fff;
-    box-shadow: 0 0 10px 5px #fff;
+  content: '';
+  position: absolute;
+  z-index: 1000;
+  bottom: 0;
+  height: 30px;
+  background-color: #fff;
+  box-shadow: 0 0 10px 5px #fff;
 }
 
 #map::before {
-    left: 0;
-    width: 220px;
+  left: 0;
+  width: 220px;
 }
 
 #map::after {
-    right: 0;
-    width: 220px;
+  right: 0;
+  width: 220px;
 }
 
 .pin {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: sans-serif;
-    text-align: center;
-    font-weight: bold;
-    line-height: 1;
-    color: #333333;
-    text-shadow: 0 0 5px #ffffff, 0 0 5px #ffffff, 0 0 5px #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1;
+  color: #333333;
+  text-shadow: 0 0 5px #ffffff, 0 0 5px #ffffff, 0 0 5px #ffffff;
 }
 
 .pin::before {
-    content: "";
-    position: absolute;
-    z-index: 10;
-    bottom: 100%;
-    display: block;
-    /* width: 60px; */
-    /* height: 80px; */
-    width: 3.5vw;
-    height: 7.5vh;
-    background-repeat: no-repeat;
-    background-position: 50% 100%;
-    background-size: contain;
+  content: "";
+  position: absolute;
+  z-index: 10;
+  bottom: 100%;
+  display: block;
+  /* width: 60px; */
+  /* height: 80px; */
+  width: 3.5vw;
+  height: 7.5vh;
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  background-size: contain;
 }
 
 .pin-vn::before {
-    background-image: url('./img/trees/tree.svg');
+  background-image: url('./img/trees/tree.svg');
 }
 
 .pin-pr::before {
-    background-image: url('./img/trees/tree7.svg');
+  background-image: url('./img/trees/tree7.svg');
 }
 
 .pin-br::before {
-    background-image: url('./img/trees/tree8.svg');
+  background-image: url('./img/trees/tree8.svg');
 }
 
 .pin-zl::before {
-    background-image: url('./img/trees/tree3.svg');
+  background-image: url('./img/trees/tree3.svg');
 }
 
 .pin-main {
-    color: #ffffff;
-    font-size: 1.2em;
-    text-shadow: 0 0 7px #000000, 0 0 7px #000000, 0 0 7px #000000;
+  color: #ffffff;
+  font-size: 1.2em;
+  text-shadow: 0 0 7px #000000, 0 0 7px #000000, 0 0 7px #000000;
 }
 
 .pin-main::before {
-    width: 5vw;
-    height: 9vh;
+  width: 5vw;
+  height: 9vh;
 }
 
 @media screen and (max-width: 800px) {
-    .pin {
-        font-size: 8px;
-    }
+  .pin {
+    font-size: 8px;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .pin {
-        font-size: 0;
-    }
+  .pin {
+    font-size: 0;
+  }
 }
 
 .pin.active::before {
-    background-size: cover;
+  background-size: cover;
 }
 
 .pin-vn.active::before {
-    background-image: url('./img/antenna-all-colors.svg#vn');
+  background-image: url('./img/antenna-all-colors.svg#vn');
 }
 
 .pin-pr.active::before {
-    background-image: url('./img/antenna-all-colors.svg#pr');
+  background-image: url('./img/antenna-all-colors.svg#pr');
 }
 
 .pin-br.active::before {
-    background-image: url('./img/antenna-all-colors.svg#br');
+  background-image: url('./img/antenna-all-colors.svg#br');
 }
 
 .pin-zl.active::before {
-    background-image: url('./img/antenna-all-colors.svg#zl');
+  background-image: url('./img/antenna-all-colors.svg#zl');
 }
 
 .ded {
-    width: 68px;
-    height: 83px;
-    margin-left: -35px;
-    margin-top: -75px;
-    background-image: url('./img/DMoroz.gif');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+  width: 68px;
+  height: 83px;
+  margin-left: -35px;
+  margin-top: -75px;
+  background-image: url('./img/DMoroz.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .ded-big {
-    position: absolute;
-    margin-top: -95px;
-    transform: translateY(-100%) scale(2);
-    transform-origin: center bottom;
+  position: absolute;
+  margin-top: -95px;
+  transform: translateY(-100%) scale(2);
+  transform-origin: center bottom;
 }
 
 .ded-big::before {
-    content: '';
-    position: absolute;
-    top: -67px;
-    left: -42px;
-    width: 110px;
-    height: 150px;
-    background-image: url('./img/DMoroz.gif'), url('./img/parasuite_.png');
-    background-repeat: no-repeat;
-    background-position: right bottom, left top;
-    background-size: 68px, 100px;
+  content: '';
+  position: absolute;
+  top: -67px;
+  left: -42px;
+  width: 110px;
+  height: 150px;
+  background-image: url('./img/DMoroz.gif'), url('./img/parasuite_.png');
+  background-repeat: no-repeat;
+  background-position: right bottom, left top;
+  background-size: 68px, 100px;
 }
 
 .ded-n,
 .ded-se,
 .ded-e,
 .ded-ne {
-    background-image: url('./img/DMoroz_forward.gif');
+  background-image: url('./img/DMoroz_forward.gif');
 }
 
 .ded-s,
 .ded-nw,
 .ded-w,
 .ded-sw {
-    background-image: url('./img/DMoroz_backward.gif');
+  background-image: url('./img/DMoroz_backward.gif');
 }
 
 .ded-jump {
-    height: 125px;
-    margin-top: -120px;
-    background-image: url('./img/DMoroz_jumping-infinity.gif');
+  height: 125px;
+  margin-top: -120px;
+  background-image: url('./img/DMoroz_jumping-infinity.gif');
 }
 
 .ded-leaving {
-    position: absolute;
-    margin-top: -95px;
-    transform-origin: center bottom;
+  position: absolute;
+  margin-top: -95px;
+  transform-origin: center bottom;
 }
 
 .deer {
-    position: absolute;
-    visibility: hidden;
+  position: absolute;
+  visibility: hidden;
 }
 
 .deer::after {
-    content: '';
-    position: absolute;
-    top: -156px;
-    left: -275px;
-    width: 401px;
-    height: 191px;
-    background-image: url('./img/deer-with-sleigh.gif');
+  content: '';
+  position: absolute;
+  top: -156px;
+  left: -275px;
+  width: 401px;
+  height: 191px;
+  background-image: url('./img/deer-with-sleigh.gif');
 }
 
 .deer-stay::after {
-    background-image: url('./img/deer-with-sleigh-stay.png');
+  background-image: url('./img/deer-with-sleigh-stay.png');
+}
+
+.sign {
+  position: absolute;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  transform: translate(-50%, -100%)
+}
+
+.sign-start {
+    top: calc(100% - 3px);
+    right: 6vw;
+}
+
+.sign-finish {
+    top: 80vh;
+    left: 3.5vw;
+}
+
+.sign-shield {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 5px;
+  padding: 5px 10px;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 7px;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #000, inset 0 0 0 2px #000;
+}
+
+.sign-leg {
+  margin-top: -5px;
+  width: 10px;
+  height: 75px;
+  background-color: #fff;
+  background-image: linear-gradient(to right, #ccc 0%, #aaa 50%, #555 100%);
+  border-radius: 50% / 3px;
 }
