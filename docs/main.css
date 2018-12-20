@@ -26,27 +26,6 @@ body {
   background-size: 15vw;
 }
 
-/* .point {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  left: -10px;
-  top: -10px;
-  border-radius: 50%;
-  border: 2px solid;
-  box-shadow: 0 0 0 2px #fff;
-}
-
-.point::after {
-  content: '';
-  border: 2px solid;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px #fff;
-} */
-
 /* Для скрытия логотипа Яндекса на карте */
 
 #map::before,
@@ -162,7 +141,7 @@ body {
   height: 83px;
   margin-left: -35px;
   margin-top: -75px;
-  background-image: url(3b7dbdbecb5125d7dd76ae2ede672795.gif);
+  background-image: url(757b6a404c4b0b8e253acca8e0d97e3c.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -170,12 +149,16 @@ body {
 
 .ded-big {
   position: absolute;
-  margin-top: -95px;
+  /* margin-top: -95px; */
   transform: translateY(-100%);
   transform-origin: center bottom;
 }
 
-.ded-parasuite {
+.ded-in-jump {
+  background-image: url(da2df138e118bfe87b2785e9c7ce635e.png);
+}
+
+/* .ded-parasuite {
   position: absolute;
   margin-top: -95px;
   transform: translateY(-100%) scale(2);
@@ -189,11 +172,11 @@ body {
   left: -42px;
   width: 110px;
   height: 150px;
-  background-image: url(3b7dbdbecb5125d7dd76ae2ede672795.gif), url(2803f66c4f89c3fdfe0b3f75ccb08a10.png);
+  background-image: url('./img/DMoroz.png'), url('./img/parasuite_.png');
   background-repeat: no-repeat;
   background-position: right bottom, left top;
   background-size: 68px, 100px;
-}
+} */
 
 .ded-n,
 .ded-se,
@@ -215,12 +198,6 @@ body {
   background-image: url(2f8e780f7915ba7fe22b7543122b5e47.gif);
 }
 
-.ded-leaving {
-  position: absolute;
-  margin-top: -95px;
-  transform-origin: center bottom;
-}
-
 .deer {
   position: absolute;
   /* right: 100vw;
@@ -231,7 +208,7 @@ body {
 .deer::after {
   content: '';
   position: absolute;
-  top: -158px;
+  top: -138px;
   left: -275px;
   width: 401px;
   height: 191px;

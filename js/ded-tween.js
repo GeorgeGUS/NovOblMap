@@ -19,34 +19,34 @@ export function dedTween (data) {
 
   // Преобразуем географические координаты в пиксели окна браузера
   var dedCoords = {
-    start: utils.converterCoords(points[0][0]),
-    end: utils.converterCoords(points[points.length - 1][1])
+    start: utils.convertCoords(points[0][0]),
+    end: utils.convertCoords(points[points.length - 1][1])
   }
 
   var dedMapStartPos = { x: dedCoords.start[0], y: dedCoords.start[1] }
   var dedMapEndPos = { x: dedCoords.end[0], y: dedCoords.end[1] }
 
-  function dedComingOnParasuite () {
-    tlComing.set(DED_PARASUITE_CLASS, { x: 0, y: 0 })
-    tlComing
-      .to(DED_PARASUITE_CLASS, 2.7, {
-        bezier: {
-          values: [{ x: dedMapStartPos.x / 1.7, y: dedMapStartPos.y / 2.7 }, dedMapStartPos]
-        },
-        scale: 1,
-        ease: Sine.easeOut
-      })
-      .set(DED_PARASUITE_CLASS, {
-        visibility: 'hidden'
-      })
-      .eventCallback('onComplete', dedLaunch)
-  }
+  // function dedComingOnParasuite () {
+  //   tlComing.set(DED_PARASUITE_CLASS, { x: 0, y: 0 })
+  //   tlComing
+  //     .to(DED_PARASUITE_CLASS, 2.7, {
+  //       bezier: {
+  //         values: [{ x: dedMapStartPos.x / 1.7, y: dedMapStartPos.y / 2.7 }, dedMapStartPos]
+  //       },
+  //       scale: 1,
+  //       ease: Sine.easeOut
+  //     })
+  //     .set(DED_PARASUITE_CLASS, {
+  //       visibility: 'hidden'
+  //     })
+  //     .eventCallback('onComplete', dedLaunch)
+  // }
 
   function dedComingOnSleigh () {
     tlComing
       .set(DED_ON_SLEIGH, {
         // Начальная позиция деда на санях
-        x: innerWidth - 50,
+        x: innerWidth - 30,
         y: innerHeight + 300,
         rotation: 60
       })
@@ -60,7 +60,7 @@ export function dedTween (data) {
         // Въезжаем на карту
         bezier: {
           values: [
-            { x: innerWidth - 450, y: innerHeight - 70 },
+            { x: innerWidth - 420, y: innerHeight - 70 },
             { x: dedMapStartPos.x + 200, y: dedMapStartPos.y + 200 }
           ]
         },
@@ -83,9 +83,11 @@ export function dedTween (data) {
         },
         rotationY: '-=180',
         scale: 1,
-        ease: Power2.easeOut
+        ease: Power2.easeOut,
+        className: '+=ded-in-jump'
       })
       .set(DED_CLASS, {
+        className: '-=ded-in-jump',
         visibility: 'hidden'
       })
       .eventCallback('onComplete', dedLaunch)
@@ -164,10 +166,13 @@ export function dedTween (data) {
           { x: dedMapEndPos.x + 50, y: dedMapEndPos.y + 100 }
         ]
       },
-      // rotation: '+=360',
       rotationY: 180,
       scale: 1.5,
-      ease: Power2.easeOut
+      ease: Power2.easeOut,
+      className: '+=ded-in-jump'
+    })
+    .set(DED_CLASS, {
+      className: '-=ded-in-jump'
     })
     .to(DED_ON_SLEIGH, 3, {
       // Уносимся в закат в сторону Пскова

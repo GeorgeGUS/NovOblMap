@@ -1,5 +1,5 @@
 export const utils = {
-  converterCoords: function (coords) {
+  convertCoords: function (coords) {
     var projection = myMap.options.get('projection')
     return myMap.converter.globalToPage(
       projection.toGlobalPixels(coords, myMap.getZoom())
@@ -9,7 +9,6 @@ export const utils = {
     var projection = myMap.options.get('projection')
     return projection
       .fromGlobalPixels(myMap.converter.pageToGlobal(pixels), myMap.getZoom())
-      .join(', ')
   },
   delay: function (fn, ms) {
     return function () {
