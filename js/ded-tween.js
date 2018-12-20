@@ -13,7 +13,7 @@ export function dedTween (data) {
   var DEER_CLASS = '.deer'
   var DED_ON_SLEIGH = [DEER_CLASS, DED_CLASS]
   var canvas = document.getElementById('canvas')
-  var dedLaunchBtn = canvas.querySelector('#ded-launch-btn')
+  // var dedLaunchBtn = canvas.querySelector('#ded-launch-btn')
 
   var dedLaunch = DMoroz(data)
 
@@ -203,12 +203,12 @@ export function dedTween (data) {
   // Вставляем гуляющего по карте Деда Мороза
   var isDedWalking = false
 
-  dedLaunchBtn.addEventListener('click', function () {
-    if (!isDedWalking) {
-      isDedWalking = true
-      tlComing.restart()
-    }
-  })
+  // dedLaunchBtn.addEventListener('click', function () {
+  //   if (!isDedWalking) {
+  //     isDedWalking = true
+  //     tlComing.restart()
+  //   }
+  // })
 
   function onEnterPress (evt) {
     if (evt.key === 'Enter' && !isDedWalking) {
