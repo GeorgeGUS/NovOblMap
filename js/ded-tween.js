@@ -60,7 +60,7 @@ export function dedTween (data) {
         // Въезжаем на карту
         bezier: {
           values: [
-            { x: innerWidth - 450, y: innerHeight - 70 }, 
+            { x: innerWidth - 450, y: innerHeight - 70 },
             { x: dedMapStartPos.x + 200, y: dedMapStartPos.y + 200 }
           ]
         },
@@ -170,7 +170,18 @@ export function dedTween (data) {
       className: '-=deer-stay',
       ease: Linear.easeNone
     })
-
+    .eventCallback('onComplete', function () {
+      // Заускаем снежинки в конце
+      new Snowflakes({
+        color: 'lightskyblue',
+        count: 100,
+        minSize: 15,
+        maxSize: 30,
+        minOpacity: 0.6,
+        maxOpacity: 0.9
+      })
+    })
+  
   function launchLeaving () {
     // tlDeer.restart()
     tlLeaving.restart()
