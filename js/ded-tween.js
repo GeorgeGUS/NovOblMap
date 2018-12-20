@@ -129,6 +129,12 @@ export function dedTween (data) {
   //   })
 
   tlLeaving
+    .set(['#map', '#canvas'], {
+      css: {
+        backgroundColor: 'rba(255,255,255,0)',
+        filter: 'blur(0)'
+      }
+    })
     .set(DED_CLASS, {
       // Проявляем деда в конечной точке
       x: dedMapEndPos.x,
@@ -170,6 +176,13 @@ export function dedTween (data) {
       className: '-=deer-stay',
       ease: Linear.easeNone
     })
+    .to(['#map', '#canvas'], 0.5, {
+      // Приглушем и слегка размываем карту
+      css: {
+        backgroundColor: 'rba(255,255,255,0.3)',
+        filter: 'blur(1px)'
+      }
+    })
     .eventCallback('onComplete', function () {
       // Заускаем снежинки в конце
       new Snowflakes({
@@ -181,7 +194,7 @@ export function dedTween (data) {
         maxOpacity: 0.9
       })
     })
-  
+
   function launchLeaving () {
     // tlDeer.restart()
     tlLeaving.restart()
