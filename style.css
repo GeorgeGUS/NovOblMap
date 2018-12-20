@@ -23,10 +23,10 @@ body {
   background-image: url('./img/rtrs-logo.png');
   background-repeat: no-repeat;
   background-position: 50px 30px;
-  background-size: 17vw;
+  background-size: 15vw;
 }
 
-.point {
+/* .point {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +45,7 @@ body {
   border: 2px solid;
   border-radius: 50%;
   box-shadow: 0 0 0 2px #fff;
-}
+} */
 
 /* Для скрытия логотипа Яндекса на карте */
 
@@ -171,11 +171,18 @@ body {
 .ded-big {
   position: absolute;
   margin-top: -95px;
+  transform: translateY(-100%);
+  transform-origin: center bottom;
+}
+
+.ded-parasuite {
+  position: absolute;
+  margin-top: -95px;
   transform: translateY(-100%) scale(2);
   transform-origin: center bottom;
 }
 
-.ded-big::before {
+.ded-parasuite::before {
   content: '';
   position: absolute;
   top: -67px;
@@ -216,13 +223,15 @@ body {
 
 .deer {
   position: absolute;
+  /* right: 100vw;
+  top: 110vh; */
   visibility: hidden;
 }
 
 .deer::after {
   content: '';
   position: absolute;
-  top: -156px;
+  top: -158px;
   left: -275px;
   width: 401px;
   height: 191px;
@@ -242,13 +251,13 @@ body {
 }
 
 .sign-start {
-    top: calc(100% - 3px);
-    right: 6vw;
+  top: calc(100% + 15px);
+  right: 7.8vw;
 }
 
 .sign-finish {
-    top: 58vh;
-    left: 3.7vw;
+  top: 58vh;
+  left: 3vw;
 }
 
 .sign-shield {

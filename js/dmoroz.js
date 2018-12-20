@@ -3,7 +3,7 @@ import { drawRoutes } from './routes'
 import { drawPins } from './pins'
 import { utils } from './utils'
 
-export function DMoroz (data, dedNode) {
+export function DMoroz (data) {
   var ded = new Car({
     iconLayout: ymaps.templateLayoutFactory.createClass(
       '<div class="ded ded-$[properties.direction]"></div>'
@@ -60,7 +60,7 @@ export function DMoroz (data, dedNode) {
         console.log('Карта запущена')
         myMap.geoObjects.remove(ded)
         var evt = new Event('launchLeaving')
-        dedNode.dispatchEvent(evt)
+        window.dispatchEvent(evt)
       }
     }, 200)
 

@@ -1,5 +1,4 @@
 export function drawPins (data, isActive) {
-  // var PinLabelClass =
   var cehIconClass = {
     'Великий Новгород': 'pin-vn',
     Пролетарий: 'pin-pr',
@@ -9,9 +8,6 @@ export function drawPins (data, isActive) {
   var activeClass = isActive ? 'active' : ''
 
   if (!isActive) {
-    console.log('before clean pinsBrObject', pinsBrObject)
-    // myMap.geoObjects.add(pinsBr)
-
     var pinsCollection = {
       type: 'FeatureCollection',
       features: []
@@ -34,8 +30,6 @@ export function drawPins (data, isActive) {
           pinLabel: pin.name
         }
       })
-      // console.log(pinsBr.getLength())
-      // myMap.geoObjects.add(myPlacemark)
     }
     pinsBrObject.add(pinsCollection)
     pinsBrObject.objects.options.set({
@@ -46,21 +40,9 @@ export function drawPins (data, isActive) {
         </div>`
       )
     })
-    console.log('before data pinsBrObject', pinsBrObject)
-    console.log('pinsBrObject.objects', pinsBrObject.objects)
-    console.log(
-      'pinsBrObject.objects.getById',
-      pinsBrObject.objects.getById('Боровичи').properties
-    )
-    console.log(
-      'pinsBrObject.getObjectState',
-      pinsBrObject.getObjectState('Боровичи')
-    )
     myMap.geoObjects.add(pinsBrObject)
   } else {
     for (var pin of data) {
-      console.log(pin)
-      console.log(pinsBrObject.objects.getById(pin.name).properties)
       pinsBrObject.objects.getById(pin.name).properties.activeClass = activeClass
     }
     myMap.geoObjects.add(pinsBrObject)
