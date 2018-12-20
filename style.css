@@ -9,6 +9,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+  font-size: 14px;
   background-color: #edf2e6;
 }
 
@@ -237,7 +238,7 @@ body {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
-  transform: translate(-50%, -100%)
+  transform: translate(-50%, -100%) scale(0.7)
 }
 
 .sign-start {
@@ -246,8 +247,8 @@ body {
 }
 
 .sign-finish {
-    top: 80vh;
-    left: 3.5vw;
+    top: 58vh;
+    left: 3.7vw;
 }
 
 .sign-shield {
