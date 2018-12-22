@@ -25,7 +25,7 @@ function init () {
   // Рисует Новгородскую область и инициируем Деда Мороза
   drawArea()
 
-  global.pinsBrObject = new ymaps.ObjectManager()
+  global.pinsObject = new ymaps.ObjectManager()
 
   // Рисует объекты ЦТВ
   drawPins(data)

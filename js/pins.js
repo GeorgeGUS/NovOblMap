@@ -31,8 +31,9 @@ export function drawPins (data, isActive) {
         }
       })
     }
-    pinsBrObject.add(pinsCollection)
-    pinsBrObject.objects.options.set({
+    pinsObject.add(pinsCollection)
+    // console.log(pinsObject)
+    pinsObject.objects.options.set({
       mainClass: mainClass,
       iconLayout: ymaps.templateLayoutFactory.createClass(
         `<div class="pin $[properties.iconClass] $[properties.mainClass] $[properties.activeClass]">
@@ -40,11 +41,11 @@ export function drawPins (data, isActive) {
         </div>`
       )
     })
-    myMap.geoObjects.add(pinsBrObject)
+    myMap.geoObjects.add(pinsObject)
   } else {
     for (var pin of data) {
-      pinsBrObject.objects.getById(pin.name).properties.activeClass = activeClass
+      pinsObject.objects.getById(pin.name).properties.activeClass = activeClass
     }
-    myMap.geoObjects.add(pinsBrObject)
+    myMap.geoObjects.add(pinsObject)
   }
 }

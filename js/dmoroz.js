@@ -1,5 +1,5 @@
 import { Car } from './car'
-import { drawRoutes } from './routes'
+import { Routes } from './routes'
 import { drawPins } from './pins'
 import { utils } from './utils'
 
@@ -25,6 +25,8 @@ export function DMoroz (data) {
     }
   })
 
+  var routes = new Routes(ceh)
+
   function coordsShift(coords) {
     return [coords[0] - 0.00005, coords[1] - 0.00005]
   }
@@ -46,12 +48,12 @@ export function DMoroz (data) {
     geoObject.properties.set('direction', '')
 
     // Рисуем маршруты (линии) от цехов до пунктов
-    drawRoutes(ceh, targetCehs[i])
+    routes.drawCehRoutes(targetCehs[i])
 
     // Рисуем активные пины поверх старых
     // (с небольшой задержкой на отрисовку маршрутов)
     var drawPinsAndDed = utils.delay(function (i) {
-      drawPins(ceh[targetCehs[i]].pins, true)
+      
 
       // Если ещё есть цеха, добавляем нового Деда
       if (i + 1 < targetCehs.length) {
@@ -59,14 +61,14 @@ export function DMoroz (data) {
       } else {
         console.log('Карта запущена')
         myMap.geoObjects.remove(ded)
+        // Если все цеха запущены, отправляем событие 
         var evt = new Event('launchLeaving')
         window.dispatchEvent(evt)
       }
-    }, 200)
+    }, 20)
 
+    drawPins(ceh[targetCehs[i]].pins, true)
     drawPinsAndDed(i)
-
-    // Если все цеха запущены, отправляем колбэк
   }, 1000)
 
   // Добавляем рекурсивную функцию перемещения по точкам

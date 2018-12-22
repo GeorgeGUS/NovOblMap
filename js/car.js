@@ -1,5 +1,3 @@
-import { utils } from './utils'
-
 /**
  * fileOverview Класс анимированной машинки
  * @see http://ymlib.narod.ru/1.1/demos/animate.html

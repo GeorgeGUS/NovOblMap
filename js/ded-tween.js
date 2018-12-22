@@ -1,10 +1,6 @@
 import { DMoroz } from './dmoroz'
 import { utils } from './utils'
 
-export function updateZoom (zoom) {
-  console.log('up zoom', zoom)
-}
-
 export function dedTween (data) {
   var tlComing = new TimelineLite({ paused: true })
   var tlLeaving = new TimelineLite({ paused: true })
@@ -12,8 +8,7 @@ export function dedTween (data) {
   var DED_CLASS = '.ded-big'
   var DEER_CLASS = '.deer'
   var DED_ON_SLEIGH = [DEER_CLASS, DED_CLASS]
-  var canvas = document.getElementById('canvas')
-  // var dedLaunchBtn = canvas.querySelector('#ded-launch-btn')
+  // var dedLaunchBtn = document.getElementById('ded-launch-btn')
 
   var dedLaunch = DMoroz(data)
 

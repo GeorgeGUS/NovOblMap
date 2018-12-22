@@ -21,7 +21,8 @@ module.exports = {
 
   devtool: 'source-map',
 
-  entry: './js/init',
+  entry: ['./js/init'],
+  // entry: ['@babel/polyfill', './js/init'],
 
   output: {
     path: __dirname + '/docs',
