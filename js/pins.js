@@ -1,9 +1,9 @@
 export function drawPins (data, isActive) {
   var cehIconClass = {
     'Великий Новгород': 'pin-vn',
+    Залучье: 'pin-zl',
     Пролетарий: 'pin-pr',
-    Боровичи: 'pin-br',
-    Залучье: 'pin-zl'
+    Боровичи: 'pin-br'
   }
   var activeClass = isActive ? 'active' : ''
 
@@ -32,7 +32,6 @@ export function drawPins (data, isActive) {
       })
     }
     pinsObject.add(pinsCollection)
-    // console.log(pinsObject)
     pinsObject.objects.options.set({
       mainClass: mainClass,
       iconLayout: ymaps.templateLayoutFactory.createClass(

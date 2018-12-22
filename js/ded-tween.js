@@ -11,6 +11,8 @@ export function dedTween (data) {
   // var dedLaunchBtn = document.getElementById('ded-launch-btn')
 
   var dedLaunch = DMoroz(data)
+  var dedJumpTime = 1.2 //s
+  var dedEase = SlowMo.ease.config(0.2, 0.4)
 
   // Преобразуем географические координаты в пиксели окна браузера
   var dedCoords = {
@@ -71,14 +73,14 @@ export function dedTween (data) {
         x: dedMapStartPos.x + 200,
         y: dedMapStartPos.y + 205
       })
-      .to(DED_CLASS, 2.7, {
+      .to(DED_CLASS, dedJumpTime, {
         // Прыгаем в начальную точку маршрута
         bezier: {
           values: [{ x: dedMapStartPos.x + 170, y: dedMapStartPos.y - 70 }, dedMapStartPos]
         },
         rotationY: '-=180',
         scale: 1,
-        ease: Power2.easeOut,
+        ease: dedEase,
         className: '+=ded-in-jump'
       })
       .set(DED_CLASS, {
@@ -153,7 +155,7 @@ export function dedTween (data) {
       x: dedMapEndPos.x,
       y: dedMapEndPos.y + 5
     })
-    .to(DED_CLASS, 2.7, {
+    .to(DED_CLASS, dedJumpTime, {
       // Дед прыгает на сани
       bezier: {
         values: [
@@ -163,7 +165,7 @@ export function dedTween (data) {
       },
       rotationY: 180,
       scale: 1.5,
-      ease: Power2.easeOut,
+      ease: dedEase,
       className: '+=ded-in-jump'
     })
     .set(DED_CLASS, {
