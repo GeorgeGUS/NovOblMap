@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca238c6d-2fef-4c38-9789-309cfd5d7824" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/js/snowflakes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/8320166ffe0157810a7def648090b945.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/84f6199a91edea5755e2c6bff3dbdb6c.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/1822d22636d5ce4a53e0e5cf963da97f.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/bee69d084d00be0632a93d51497bacdc.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/docs/bundle.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/area.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/area.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/ded-tween.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ded-tween.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/dmoroz.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/dmoroz.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/pins.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/pins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/docs/" />
@@ -29,10 +25,19 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="814">
+              <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+            <state relative-caret-position="281">
+              <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -52,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/ded-tween.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="231" column="27" selection-start-line="231" selection-start-column="27" selection-end-line="231" selection-end-column="45" />
+            <state relative-caret-position="770">
+              <caret line="218" column="23" lean-forward="true" selection-start-line="218" selection-start-column="23" selection-end-line="218" selection-end-column="23" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -61,20 +66,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/pins.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
+            <state relative-caret-position="946">
               <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/snowflakes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+            <state relative-caret-position="631">
+              <caret line="289" lean-forward="true" selection-start-line="289" selection-end-line="289" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#9850#13035#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -115,6 +124,19 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>imagesStyle</find>
+      <find>.snowflake__inner_type</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -122,13 +144,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/img/antenna-green.svg" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/dmoroz.js" />
-        <option value="$PROJECT_DIR$/js/ded-tween.js" />
-        <option value="$PROJECT_DIR$/style.css" />
         <option value="$PROJECT_DIR$/js/routes.js" />
         <option value="$PROJECT_DIR$/js/area.js" />
         <option value="$PROJECT_DIR$/js/pins.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/snowflakes.js" />
+        <option value="$PROJECT_DIR$/js/ded-tween.js" />
+        <option value="$PROJECT_DIR$/style.css" />
       </list>
     </option>
   </component>
@@ -151,6 +174,11 @@
             <path>
               <item name="NovOblMap" type="b2602c69:ProjectViewProjectNode" />
               <item name="NovOblMap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NovOblMap" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NovOblMap" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NovOblMap" type="b2602c69:ProjectViewProjectNode" />
@@ -201,7 +229,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5025000" />
+    <option name="totallyTimeSpent" value="11988000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -238,49 +266,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/antenna-green.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/init.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/dmoroz.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="54" lean-forward="true" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/ded-tween.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="231" column="27" selection-start-line="231" selection-start-column="27" selection-end-line="231" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -300,8 +291,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/pins.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
+        <state relative-caret-position="946">
           <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/antenna-green.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/dmoroz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="54" lean-forward="true" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ded-tween.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="218" column="23" lean-forward="true" selection-start-line="218" selection-start-column="23" selection-end-line="218" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/snowflakes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="289" lean-forward="true" selection-start-line="289" selection-end-line="289" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#9850#13035#0" />
+          </folding>
         </state>
       </provider>
     </entry>

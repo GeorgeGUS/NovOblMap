@@ -25,10 +25,10 @@ body {
   width: 100vw;
   height: 100vh;
   cursor: initial;
-  background-image: url('./img/rtrs-logo.png');
+  background-image: url('./img/butterfly-with-text.svg'), url('./img/rtrs-logo.svg');
   background-repeat: no-repeat;
-  background-position: 50px 30px;
-  background-size: 15vw;
+  background-position: 2.6% 30px, 95% 27px;
+  background-size: 18.5vw, 14.5vw;
 }
 
 .error::after,

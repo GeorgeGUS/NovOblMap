@@ -25,10 +25,10 @@ body {
   width: 100vw;
   height: 100vh;
   cursor: initial;
-  background-image: url(31f32477856865ca9cec12aa76095c2c.png);
+  background-image: url(ba369767262cc2ee1b7f9e081d27967b.svg), url(62e6603aea1be8bf96d99a2f7e12d02f.svg);
   background-repeat: no-repeat;
-  background-position: 50px 30px;
-  background-size: 15vw;
+  background-position: 2.6% 30px, 95% 27px;
+  background-size: 18.5vw, 14.5vw;
 }
 
 .error::after,

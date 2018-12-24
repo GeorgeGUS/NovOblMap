@@ -1,5 +1,6 @@
 import { DMoroz } from './dmoroz'
 import { Routes } from './routes'
+import { Snowflakes } from './snowflakes'
 import { utils } from './utils'
 
 export function dedTween (data) {
@@ -206,10 +207,11 @@ export function dedTween (data) {
       new Snowflakes({
         color: 'lightskyblue',
         count: 100,
-        minSize: 15,
+        minSize: 20,
         maxSize: 30,
         minOpacity: 0.6,
-        maxOpacity: 0.9
+        maxOpacity: 1,
+        rotation: false,
       })
     })
 
