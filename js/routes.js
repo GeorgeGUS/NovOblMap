@@ -1,10 +1,12 @@
 import { utils } from './utils'
 export class Routes {
   constructor (cehs) {
+    this._canvas = document.getElementById('canvas')
     this._cehs = cehs
     this._cehNames = Object.keys(cehs)
     this._cehDone = []
     this._object = {}
+    this._isReady = false
     // На случай, если понадобятся разные цвета маршрутов
     this._colors = {
       'Великий Новгород': '#3c0',
@@ -32,18 +34,24 @@ export class Routes {
         this._object[cehName] = collection
         return cehName
       }).then(cehName => {
-        console.log(cehName)
+        console.log(`Маршруты цеха ${cehName} построены`)
         this._cehDone.push(cehName)
         if (this._cehDone.length ==this._cehNames.length) {
-          console.log('Маршруты построены')
+          console.log('Маршруты всех цехов построены, выпускайте Кракена!')
+          this._canvas.classList.remove('loading')
+          this._isReady = true
         }
       }).catch(err => {
         console.log(err)
+        this._canvas.classList.remove('loading')
+        this._canvas.classList.add('error')
       })
     }
   }
 
-  
+  get isReady () {
+    return this._isReady
+  }
 
   drawCehRoutes (cehName) {
     this._object[cehName].each(path => {

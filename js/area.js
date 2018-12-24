@@ -39,6 +39,7 @@ export function drawArea () {
           // создаём событие для обновления зума и координат
           var evt = new Event('updateZoom')
           window.dispatchEvent(evt)
+          console.log('Карта области загружена')
         })
     },
     function (e) {

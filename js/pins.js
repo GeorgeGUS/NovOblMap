@@ -41,6 +41,7 @@ export function drawPins (data, isActive) {
       )
     })
     myMap.geoObjects.add(pinsObject)
+    console.log('Метки загружены')
   } else {
     for (var pin of data) {
       pinsObject.objects.getById(pin.name).properties.activeClass = activeClass

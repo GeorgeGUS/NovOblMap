@@ -1,4 +1,5 @@
 import { DMoroz } from './dmoroz'
+import { Routes } from './routes'
 import { utils } from './utils'
 
 export function dedTween (data) {
@@ -10,7 +11,22 @@ export function dedTween (data) {
   var DED_ON_SLEIGH = [DEER_CLASS, DED_CLASS]
   // var dedLaunchBtn = document.getElementById('ded-launch-btn')
 
-  var dedLaunch = DMoroz(data)
+  // Получаем объект цехов с их координатами и принадлежащими пунктами
+  var ceh = {}
+  data.forEach(pin => {
+    if (ceh.hasOwnProperty(pin.ceh)) {
+      ceh[pin.ceh].pins.push(pin)
+    } else {
+      ceh[pin.ceh] = { pins: [pin] }
+    }
+
+    if (pin.ceh === pin.name) {
+      ceh[pin.ceh].coords = [pin.lat, pin.len]
+    }
+  })
+
+  var routes = new Routes(ceh)
+  var dedLaunch = DMoroz(data, routes, ceh)
   var dedJumpTime = 1.2 //s
   var dedEase = SlowMo.ease.config(0.2, 0.4)
 
@@ -213,7 +229,7 @@ export function dedTween (data) {
   // })
 
   function onEnterPress (evt) {
-    if (evt.key === 'Enter' && !isDedWalking) {
+    if (evt.key === 'Enter' && routes.isReady && !isDedWalking) {
       isDedWalking = true
       tlComing.restart()
     }

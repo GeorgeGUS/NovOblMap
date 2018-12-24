@@ -31,6 +31,26 @@ body {
   background-size: 15vw;
 }
 
+.error::after,
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255,255,255,0.7) no-repeat center;
+  background-size: 200px 200px;
+}
+
+.loading::after {
+  background-image:  url(d773f8be1e430c62c1c0860be05d22ee.svg);
+}
+
+.error::after {
+  background-image:  url(a6ed2361c18acc69e24e52c7c0d4c793.svg);
+}
+
 /* Для скрытия логотипа Яндекса на карте */
 
 #map::before,
@@ -75,7 +95,7 @@ body {
   /* width: 60px; */
   /* height: 80px; */
   width: 3.5vw;
-  height: 7.5vh;  
+  height: 7.5vh;
   background-repeat: no-repeat;
   background-position: 50% 100%;
   background-size: contain;

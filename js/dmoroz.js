@@ -1,31 +1,14 @@
 import { Car } from './car'
-import { Routes } from './routes'
 import { drawPins } from './pins'
 import { utils } from './utils'
 
-export function DMoroz (data) {
+export function DMoroz (data, routes, ceh) {
   var ded = new Car({
     iconLayout: ymaps.templateLayoutFactory.createClass(
       '<div class="ded ded-$[properties.direction]"></div>'
     )
   })
   myMap.geoObjects.add(ded)
-
-  // Получаем объект цехов с их координатами и принадлежащими пунктами
-  var ceh = {}
-  data.forEach(pin => {
-    if (ceh.hasOwnProperty(pin.ceh)) {
-      ceh[pin.ceh].pins.push(pin)
-    } else {
-      ceh[pin.ceh] = { pins: [pin] }
-    }
-
-    if (pin.ceh === pin.name) {
-      ceh[pin.ceh].coords = [pin.lat, pin.len]
-    }
-  })
-
-  var routes = new Routes(ceh)
 
   function coordsShift(coords) {
     return [coords[0] - 0.00005, coords[1] - 0.00005]
