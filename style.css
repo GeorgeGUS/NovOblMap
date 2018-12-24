@@ -75,7 +75,7 @@ body {
   /* width: 60px; */
   /* height: 80px; */
   width: 3.5vw;
-  height: 7.5vh;
+  height: 7.5vh;  
   background-repeat: no-repeat;
   background-position: 50% 100%;
   background-size: contain;
@@ -121,24 +121,29 @@ body {
 }
 
 .pin.active::before {
-  background-size: cover;
+  background-image: url('./img/antenna-green.svg');
+  background-size: contain;
 }
 
-.pin-vn.active::before {
+/*.pin-vn.active::before {
   background-image: url('./img/antenna-all-colors.svg#vn');
+  background-size: cover;
 }
 
 .pin-pr.active::before {
   background-image: url('./img/antenna-all-colors.svg#pr');
+  background-size: cover;
 }
 
 .pin-br.active::before {
   background-image: url('./img/antenna-all-colors.svg#br');
+  background-size: cover;
 }
 
 .pin-zl.active::before {
   background-image: url('./img/antenna-all-colors.svg#zl');
-}
+  background-size: cover;
+}*/
 
 .ded {
   width: 68px;
