@@ -22,6 +22,13 @@ function init () {
   // Запретить манипуляции с картой
   myMap.behaviors.disable(['drag', 'scrollZoom', 'dblClickZoom'])
 
+  // Заплатка под логотип РТРС (тупо, но зато работает)
+  var patch = new ymaps.Rectangle([[59, 35.61], [58.9,36.845]], {}, {
+    strokeWidth: 0,
+    fillColor: '#fff'
+  })
+  myMap.geoObjects.add(patch)
+
   // Рисует Новгородскую область и инициируем Деда Мороза
   drawArea()
 
