@@ -81,7 +81,12 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['docs']),
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './index.html',
+      filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './reserve-index.html',
+      filename: 'reserve-index.html'
     }),
     new FaviconsWebpackPlugin({
       logo: './ded-icon.png',

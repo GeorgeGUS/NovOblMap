@@ -31,6 +31,42 @@ body {
   background-size: 18.5vw, 14.5vw;
 }
 
+.v-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.v-focusable:active,
+.v-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: relative;
+  white-space: normal;
+  width: auto;
+}
+
+.toggle-link {
+  top: 15px;
+  z-index: 2000;
+  padding: 10px 15px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  background-color: #ffffff;
+  color: #03c;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  /*text-decoration: none;*/
+}
+
 .error::after,
 .loading::after {
   content: '';
