@@ -1,22 +1,23 @@
-export function drawPins (data, isActive) {
-  var cehIconClass = {
-    'Великий Новгород': 'pin-vn',
-    Залучье: 'pin-zl',
-    Пролетарий: 'pin-pr',
-    Боровичи: 'pin-br'
-  }
-  var activeClass = isActive ? 'active' : ''
+export class Pins {
+  constructor(data) {
+    this._pinsObject = new ymaps.ObjectManager()
 
-  if (!isActive) {
-    var pinsCollection = {
+    this._cehIconClass = {
+      'Великий Новгород': 'pin-vn',
+      Залучье: 'pin-zl',
+      Пролетарий: 'pin-pr',
+      Боровичи: 'pin-br'
+    }
+
+    this._pinsCollection = {
       type: 'FeatureCollection',
       features: []
     }
 
     for (var pin of data) {
-      var iconClass = cehIconClass[pin.ceh]
+      var iconClass = this._cehIconClass[pin.ceh]
       var mainClass = pin.ceh === pin.name ? 'pin-main' : ''
-      pinsCollection.features.push({
+      this._pinsCollection.features.push({
         type: 'Feature',
         id: pin.name,
         geometry: {
@@ -24,15 +25,15 @@ export function drawPins (data, isActive) {
           coordinates: [pin.lat, pin.len]
         },
         properties: {
-          activeClass: activeClass,
+          activeClass: '',
           iconClass: iconClass,
           mainClass: mainClass,
           pinLabel: pin.name
         }
       })
     }
-    pinsObject.add(pinsCollection)
-    pinsObject.objects.options.set({
+    this._pinsObject.add(this._pinsCollection)
+    this._pinsObject.objects.options.set({
       mainClass: mainClass,
       iconLayout: ymaps.templateLayoutFactory.createClass(
         `<div class="pin $[properties.iconClass] $[properties.mainClass] $[properties.activeClass]">
@@ -40,12 +41,14 @@ export function drawPins (data, isActive) {
         </div>`
       )
     })
-    myMap.geoObjects.add(pinsObject)
+    myMap.geoObjects.add(this._pinsObject)
     console.log('Метки загружены')
-  } else {
+  }
+
+  drawPins(data) {
     for (var pin of data) {
-      pinsObject.objects.getById(pin.name).properties.activeClass = activeClass
+      this._pinsObject.objects.getById(pin.name).properties.activeClass = 'active'
     }
-    myMap.geoObjects.add(pinsObject)
+    myMap.geoObjects.add(this._pinsObject)
   }
 }

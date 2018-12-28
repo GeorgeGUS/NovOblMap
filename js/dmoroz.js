@@ -1,8 +1,7 @@
 import { Car } from './car'
-import { drawPins } from './pins'
 import { utils } from './utils'
 
-export function DMoroz (data, routes, ceh) {
+export function DMoroz (ceh, routes, pins) {
   var ded = new Car({
     iconLayout: ymaps.templateLayoutFactory.createClass(
       '<div class="ded ded-$[properties.direction]"></div>'
@@ -50,7 +49,7 @@ export function DMoroz (data, routes, ceh) {
       }
     }, 20)
 
-    drawPins(ceh[targetCehs[i]].pins, true)
+    pins.drawPins(ceh[targetCehs[i]].pins)
     drawPinsAndDed(i)
   }, 1000)
 

@@ -1,4 +1,5 @@
 import { DMoroz } from './dmoroz'
+import { Pins } from './pins'
 import { Routes } from './routes'
 import { Snowflakes } from './snowflakes'
 import { utils } from './utils'
@@ -26,8 +27,10 @@ export function dedTween (data) {
     }
   })
 
+  // Рисует объекты ЦТВ
+  var pins = new Pins(data)
   var routes = new Routes(ceh)
-  var dedLaunch = DMoroz(data, routes, ceh)
+  var dedLaunch = DMoroz(ceh, routes, pins)
   var dedJumpTime = 1.2 //s
   var dedEase = SlowMo.ease.config(0.2, 0.4)
 
