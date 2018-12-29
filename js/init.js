@@ -1,6 +1,6 @@
 import '../style.css'
 import { data } from './data'
-import { drawArea } from './area'
+import { Area } from './area'
 import { dedTween } from './ded-tween'
 
 ymaps.ready(init)
@@ -25,11 +25,11 @@ function init () {
   var patch = new ymaps.Rectangle([[59, 35.61], [58.9,36.845]], {}, {
     strokeWidth: 0,
     fillColor: '#fff'
-  })
-  myMap.geoObjects.add(patch)
+  });
+  myMap.geoObjects.add(patch);
 
-  // Рисует Новгородскую область и инициируем Деда Мороза
-  drawArea()
+  // Рисуем Новгородскую область
+  new Area();
 
   // Инициируем Деда Мороза только после пересчёта координат
   window.addEventListener('updateZoom', function () {

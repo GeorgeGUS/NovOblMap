@@ -25,7 +25,7 @@ body {
   width: 100vw;
   height: 100vh;
   cursor: initial;
-  background-image: url(ee1770f6c804f4e5bfb148c0944845dc.svg), url(c367d93a0669cae4e285115efc660a81.svg);
+  background-image: url(ba369767262cc2ee1b7f9e081d27967b.svg), url(c367d93a0669cae4e285115efc660a81.svg);
   background-repeat: no-repeat;
   background-position: 2.6% 30px, 95% 27px;
   background-size: 18.5vw, 14.5vw;
@@ -84,7 +84,7 @@ body {
 }
 
 .error::after {
-  background-image:  url(b1cb9437712f3b8742bfbe5fc841390e.svg);
+  background-image:  url(a6ed2361c18acc69e24e52c7c0d4c793.svg);
 }
 
 /* Для скрытия логотипа Яндекса на карте */

@@ -1,6 +1,7 @@
 export class Pins {
   constructor(data) {
     this._pinsObject = new ymaps.ObjectManager()
+    this._ACTIVE_CLASS = 'active'
 
     this._cehIconClass = {
       'Великий Новгород': 'pin-vn',
@@ -47,7 +48,7 @@ export class Pins {
 
   drawPins(data) {
     for (var pin of data) {
-      this._pinsObject.objects.getById(pin.name).properties.activeClass = 'active'
+      this._pinsObject.objects.getById(pin.name).properties.activeClass = this._ACTIVE_CLASS
     }
     myMap.geoObjects.add(this._pinsObject)
   }

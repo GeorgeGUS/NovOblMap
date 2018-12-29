@@ -7,13 +7,6 @@ export class Routes {
     this._cehDone = []
     this._object = {}
     this._isReady = false
-    // На случай, если понадобятся разные цвета маршрутов
-    this._colors = {
-      'Великий Новгород': '#3c0',
-      Залучье: '#ff9800',
-      Пролетарий: '#673ab7',
-      Боровичи: '#f44336'
-    }
 
     // Проводим маршруты от головных цехов до их пунктов
     for (let cehName in this._cehs) {
@@ -57,8 +50,6 @@ export class Routes {
     this._object[cehName].each(path => {
       path.options.set({
         strokeColor: '#87cefa'
-        // На случай, если понадобятся разные цвета маршрутов
-        // strokeColor: this._colors[cehName]
       })
     })
   }
